@@ -1,0 +1,994 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Linquad — Apersepsi SPLTV & SPtLDV (Kelas X)</title>
+  <style>
+    :root {
+      --primary: #2563eb;
+      --primary-dark: #1d4ed8;
+      --primary-light: #eff6ff;
+      --secondary: #0f172a;
+      --accent: #f97316;
+      --success: #16a34a;
+      --success-bg: #dcfce7;
+      --danger: #dc2626;
+      --danger-bg: #fee2e2;
+      --bg: #f8fafc;
+      --card: #ffffff;
+      --border: #e2e8f0;
+      --text: #1e293b;
+      --muted: #64748b;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+    }
+
+    body {
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Header & Progress */
+    header {
+      background: var(--card);
+      border-bottom: 1px solid var(--border);
+      padding: 1rem 1.5rem;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    }
+
+    .header-inner {
+      max-width: 960px;
+      margin: 0 auto;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1rem;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      font-weight: 800;
+      font-size: 1.25rem;
+      color: var(--primary);
+    }
+
+    .brand span {
+      background: var(--primary);
+      color: #fff;
+      padding: 0.15rem 0.55rem;
+      border-radius: 6px;
+      font-size: 0.9rem;
+    }
+
+    .step-nav {
+      display: flex;
+      gap: 0.4rem;
+    }
+
+    .step-btn {
+      width: 36px;
+      height: 36px;
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      background: var(--card);
+      color: var(--muted);
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .step-btn.active {
+      background: var(--primary);
+      color: #fff;
+      border-color: var(--primary);
+    }
+
+    .step-btn.done {
+      background: var(--success-bg);
+      color: var(--success);
+      border-color: #86efac;
+    }
+
+    /* Main Container */
+    main {
+      flex: 1;
+      max-width: 960px;
+      width: 100%;
+      margin: 1.5rem auto;
+      padding: 0 1rem;
+    }
+
+    .screen {
+      display: none;
+      background: var(--card);
+      border: 1px solid var(--border);
+      border-radius: 16px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(15, 23, 42, 0.04);
+      animation: fadeIn 0.25s ease;
+    }
+
+    .screen.active {
+      display: block;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(6px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    .badge {
+      display: inline-block;
+      background: var(--primary-light);
+      color: var(--primary);
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.25rem 0.75rem;
+      border-radius: 999px;
+      margin-bottom: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+
+    h1 {
+      font-size: 1.65rem;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    h2 {
+      font-size: 1.35rem;
+      color: var(--secondary);
+      margin-bottom: 0.75rem;
+    }
+
+    p.lead {
+      font-size: 1.05rem;
+      color: #334155;
+      margin-bottom: 1.25rem;
+    }
+
+    /* Cards & Boxes */
+    .callout {
+      background: var(--primary-light);
+      border-left: 4px solid var(--primary);
+      padding: 1.1rem 1.25rem;
+      border-radius: 0 10px 10px 0;
+      margin: 1.25rem 0;
+    }
+
+    .callout-title {
+      font-weight: 700;
+      color: var(--primary-dark);
+      margin-bottom: 0.35rem;
+    }
+
+    ul.goals {
+      margin: 0.75rem 0 1.25rem 1.25rem;
+      display: grid;
+      gap: 0.5rem;
+    }
+
+    /* Multiple Choice */
+    .options-grid {
+      display: grid;
+      gap: 0.75rem;
+      margin: 1.25rem 0;
+    }
+
+    .option-card {
+      display: flex;
+      align-items: center;
+      gap: 0.85rem;
+      padding: 0.9rem 1.1rem;
+      border: 2px solid var(--border);
+      border-radius: 10px;
+      cursor: pointer;
+      transition: all 0.15s;
+      background: #fff;
+      font-size: 1.05rem;
+      font-weight: 600;
+    }
+
+    .option-card:hover {
+      border-color: #93c5fd;
+      background: #f8fafc;
+    }
+
+    .option-card.selected {
+      border-color: var(--primary);
+      background: var(--primary-light);
+    }
+
+    .option-card.correct {
+      border-color: var(--success);
+      background: var(--success-bg);
+      color: #14532d;
+    }
+
+    .option-card.wrong {
+      border-color: var(--danger);
+      background: var(--danger-bg);
+      color: #7f1d1d;
+    }
+
+    /* Split Screen Layout (Layar 3 & 4) */
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1.5rem;
+      align-items: start;
+      margin-top: 1rem;
+    }
+
+    @media (max-width: 768px) {
+      .split-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Paket Cards Layar 3 */
+    .paket-box {
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      overflow: hidden;
+      margin-bottom: 1rem;
+      background: #fff;
+    }
+
+    .paket-header {
+      background: var(--primary-light);
+      color: var(--primary-dark);
+      font-weight: 700;
+      padding: 0.5rem 1rem;
+      font-size: 0.9rem;
+      text-align: center;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .paket-body {
+      padding: 1rem;
+      text-align: center;
+    }
+
+    .icons-row {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 0.4rem;
+      font-size: 1.4rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .paket-price {
+      font-size: 1.35rem;
+      font-weight: 800;
+      color: var(--secondary);
+      margin-top: 0.35rem;
+    }
+
+    /* Inputs & Buttons */
+    .input-group {
+      margin: 0.85rem 0;
+    }
+
+    .input-group label {
+      display: block;
+      font-weight: 600;
+      margin-bottom: 0.35rem;
+      font-size: 0.95rem;
+    }
+
+    .input-row {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    input[type="number"], select {
+      width: 100%;
+      padding: 0.65rem 0.85rem;
+      border: 1.5px solid var(--border);
+      border-radius: 8px;
+      font-size: 1rem;
+    }
+
+    input[type="number"]:focus, select:focus {
+      outline: none;
+      border-color: var(--primary);
+    }
+
+    .btn {
+      background: var(--primary);
+      color: #fff;
+      border: none;
+      padding: 0.7rem 1.35rem;
+      border-radius: 8px;
+      font-weight: 700;
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: background 0.2s;
+    }
+
+    .btn:hover {
+      background: var(--primary-dark);
+    }
+
+    .btn-outline {
+      background: #fff;
+      color: var(--text);
+      border: 1.5px solid var(--border);
+    }
+
+    .btn-outline:hover {
+      background: #f1f5f9;
+    }
+
+    .feedback {
+      margin-top: 1rem;
+      padding: 0.9rem 1.1rem;
+      border-radius: 10px;
+      font-weight: 500;
+      display: none;
+    }
+
+    .feedback.show {
+      display: block;
+    }
+
+    .feedback.success {
+      background: var(--success-bg);
+      color: #14532d;
+      border: 1px solid #86efac;
+    }
+
+    .feedback.error {
+      background: var(--danger-bg);
+      color: #7f1d1d;
+      border: 1px solid #fca5a5;
+    }
+
+    /* Canvas Graph */
+    .canvas-wrap {
+      background: #fff;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 0.75rem;
+      text-align: center;
+    }
+
+    canvas {
+      width: 100%;
+      max-width: 380px;
+      height: auto;
+      border-radius: 8px;
+      background: #ffffff;
+    }
+
+    .legend {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      font-size: 0.85rem;
+      margin-top: 0.5rem;
+      flex-wrap: wrap;
+    }
+
+    .legend span {
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+
+    .dot {
+      width: 12px;
+      height: 4px;
+      border-radius: 2px;
+      display: inline-block;
+    }
+
+    /* Slider Controls */
+    .slider-box {
+      background: #f8fafc;
+      border: 1px solid var(--border);
+      padding: 0.9rem;
+      border-radius: 10px;
+      margin-bottom: 0.85rem;
+    }
+
+    .slider-header {
+      display: flex;
+      justify-content: space-between;
+      font-weight: 700;
+      margin-bottom: 0.4rem;
+    }
+
+    input[type="range"] {
+      width: 100%;
+      accent-color: var(--primary);
+      cursor: pointer;
+    }
+
+    /* Snapshot Teacher Pause */
+    .snapshot-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1rem;
+      margin-top: 0.75rem;
+    }
+
+    .snap-card {
+      background: #fff;
+      border: 1.5px solid var(--border);
+      border-radius: 10px;
+      padding: 1rem;
+    }
+
+    /* Footer Navigation */
+    .screen-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 2rem;
+      padding-top: 1.25rem;
+      border-top: 1px solid var(--border);
+    }
+
+    footer.site-footer {
+      text-align: center;
+      padding: 1.25rem;
+      font-size: 0.85rem;
+      color: var(--muted);
+    }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="brand">
+        <span>LINQUAD</span> Modul Interaktif Kelas X
+      </div>
+      <div class="step-nav" id="stepNav">
+        <button class="step-btn active" onclick="goToScreen(1)" title="Layar 1: Pengantar">1</button>
+        <button class="step-btn" onclick="goToScreen(2)" title="Layar 2: Persamaan Linear">2</button>
+        <button class="step-btn" onclick="goToScreen(3)" title="Layar 3: SPLDV Paket Alat Tulis">3</button>
+        <button class="step-btn" onclick="goToScreen(4)" title="Layar 4: Eksplorasi Grafik Garis">4</button>
+        <button class="step-btn" onclick="goToScreen(5)" title="Layar 5: Pertidaksamaan">5</button>
+      </div>
+    </div>
+  </header>
+
+  <main>
+    <!-- LAYAR 1: NOTE (HALAMAN DEPAN) -->
+    <section class="screen active" id="screen-1">
+      <span class="badge">Layar 1 dari 5 • Apersepsi</span>
+      <h1>Sistem Persamaan & Pertidaksamaan Linear</h1>
+      <p class="lead">
+        Selamat datang di <strong>Linquad</strong>! Sebelum masuk ke masalah tiga variabel dan daerah pertidaksamaan, mari kita segarkan kembali ingatanmu tentang materi prasyarat.
+      </p>
+
+      <div class="callout">
+        <div class="callout-title">🤔 Pertanyaan Pemantik</div>
+        <p>"Pernah patungan bayar makanan bersama teman-teman, tapi struk rinciannya hilang dan hanya tercatat total bayarnya saja? Bisakah matematika menebak harga tiap menu?"</p>
+      </div>
+
+      <h3>Tujuan Pembelajaran Hari Ini:</h3>
+      <ul class="goals">
+        <li>Memodelkan masalah sehari-hari (nota belanja & anggaran usaha) menjadi SPLTV dan SPtLDV.</li>
+        <li>Menyelesaikan SPLTV dengan metode eliminasi–substitusi yang efisien dan memeriksa solusinya.</li>
+        <li>Menganalisis banyaknya solusi sistem persamaan (tunggal, tidak ada, atau banyak) dari hasil eliminasi.</li>
+        <li>Melukis daerah himpunan penyelesaian (DHP) SPtLDV pada bidang Kartesius untuk mengambil keputusan.</li>
+      </ul>
+
+      <div class="screen-footer">
+        <span style="color: var(--muted); font-size: 0.9rem;">Tahap: Kilas Balik Materi Prasyarat</span>
+        <button class="btn" onclick="goToScreen(2)">Mulai Apersepsi →</button>
+      </div>
+    </section>
+
+    <!-- LAYAR 2: MULTIPLE CHOICE (MENGENALI PERSAMAAN LINEAR) -->
+    <section class="screen" id="screen-2">
+      <span class="badge">Layar 2 dari 5 • Mengenali Persamaan Linear</span>
+      <h2>Manakah yang merupakan persamaan linear?</h2>
+      <p class="lead">Pilih satu persamaan di bawah ini yang memenuhi ciri persamaan linear dua variabel.</p>
+
+      <div class="options-grid" id="mc2-options">
+        <div class="option-card" onclick="selectMC2('A', this)">
+          <span>A.</span> <span>2x + 3y = 12</span>
+        </div>
+        <div class="option-card" onclick="selectMC2('B', this)">
+          <span>B.</span> <span>x² + y = 5</span>
+        </div>
+        <div class="option-card" onclick="selectMC2('C', this)">
+          <span>C.</span> <span>xy = 6</span>
+        </div>
+        <div class="option-card" onclick="selectMC2('D', this)">
+          <span>D.</span> <span>3/x + y = 1</span>
+        </div>
+      </div>
+
+      <button class="btn" onclick="checkMC2()">Periksa Jawaban</button>
+      <div class="feedback" id="fb-2"></div>
+
+      <div class="screen-footer">
+        <button class="btn btn-outline" onclick="goToScreen(1)">← Sebelumnya</button>
+        <button class="btn" onclick="goToScreen(3)">Lanjut ke Layar 3 →</button>
+      </div>
+    </section>
+
+    <!-- LAYAR 3: MATH RESPONSE + GRAPH (SPLDV PAKET ALAT TULIS) -->
+    <section class="screen" id="screen-3">
+      <span class="badge">Layar 3 dari 5 • Kilas Balik SPLDV</span>
+      <h2>Dua Paket, Dua Informasi: Cukup untuk Mencari Harga Satuan</h2>
+      <p class="lead">Harga satuan tidak dicantumkan pada promo alat tulis berikut. Berapa harga <strong>1 buku tulis</strong> dan <strong>1 pensil</strong>?</p>
+
+      <div class="split-grid">
+        <!-- Sisi Kiri: Ilustrasi Paket -->
+        <div>
+          <div class="paket-box">
+            <div class="paket-header">PROMO PAKET A</div>
+            <div class="paket-body">
+              <div class="icons-row" title="5 Buku Tulis & 2 Pensil">📘📘📘📘📘 ✏️✏️</div>
+              <div>5 buku tulis + 2 pensil</div>
+              <div class="paket-price">Rp18.000</div>
+            </div>
+          </div>
+
+          <div class="paket-box">
+            <div class="paket-header">PROMO PAKET B</div>
+            <div class="paket-body">
+              <div class="icons-row" title="1 Buku Tulis & 2 Pensil">📘 ✏️✏️</div>
+              <div>1 buku tulis + 2 pensil</div>
+              <div class="paket-price">Rp10.000</div>
+            </div>
+          </div>
+
+          <div class="input-group">
+            <label for="ans-buku">Harga 1 buku tulis (Rp):</label>
+            <input type="number" id="ans-buku" placeholder="Contoh: 2000" step="500" />
+          </div>
+          <div class="input-group">
+            <label for="ans-pensil">Harga 1 pensil (Rp):</label>
+            <input type="number" id="ans-pensil" placeholder="Contoh: 4000" step="500" />
+          </div>
+          <button class="btn" onclick="checkLayar3()">Cek Hitungan & Tampilkan Titik Potong</button>
+          <div class="feedback" id="fb-3"></div>
+        </div>
+
+        <!-- Sisi Kanan: Grafik Pemeriksa -->
+        <div class="canvas-wrap">
+          <div style="font-weight: 700; margin-bottom: 0.4rem; font-size: 0.95rem;">Grafik Pemeriksa (dalam ribuan rupiah)</div>
+          <canvas id="canvas3" width="380" height="340"></canvas>
+          <div class="legend">
+            <span><i class="dot" style="background:#2563eb;"></i> 5x + 2y = 18</span>
+            <span><i class="dot" style="background:#f97316;"></i> x + 2y = 10</span>
+          </div>
+          <p style="font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem;">
+            Titik potong kedua garis menunjukkan pasangan (harga buku, harga pensil) dalam ribuan rupiah.
+          </p>
+        </div>
+      </div>
+
+      <div class="screen-footer">
+        <button class="btn btn-outline" onclick="goToScreen(2)">← Sebelumnya</button>
+        <button class="btn" onclick="goToScreen(4)">Lanjut ke Layar 4 →</button>
+      </div>
+    </section>
+
+    <!-- LAYAR 4: GRAPH SLIDER + PERTANYAAN POSISI DUA GARIS -->
+    <section class="screen" id="screen-4">
+      <span class="badge">Layar 4 dari 5 • Eksplorasi Kedudukan Dua Garis</span>
+      <h2>Kapan Dua Garis Berimpit, Sejajar, atau Berpotongan?</h2>
+      <p class="lead">Geser slider kemiringan <strong>a</strong> dan konstanta <strong>c</strong> di bawah ini untuk mengamati perubahan posisi garis biru terhadap garis oranye.</p>
+
+      <div class="split-grid">
+        <div class="canvas-wrap">
+          <canvas id="canvas4" width="380" height="340"></canvas>
+          <div class="legend">
+            <span><i class="dot" style="background:#2563eb;"></i> Garis 1: y = <strong id="lbl-a">1</strong>x + 1</span>
+            <span><i class="dot" style="background:#f97316;"></i> Garis 2: y = 2x + <strong id="lbl-c">1</strong></span>
+          </div>
+        </div>
+
+        <div>
+          <div class="slider-box">
+            <div class="slider-header">
+              <span>Kemiringan Garis 1 (a):</span>
+              <span id="val-a" style="color: var(--primary);">1</span>
+            </div>
+            <input type="range" id="slider-a" min="-5" max="5" step="0.5" value="1" oninput="updateGraph4()" />
+          </div>
+
+          <div class="slider-box">
+            <div class="slider-header">
+              <span>Konstanta Garis 2 (c):</span>
+              <span id="val-c" style="color: var(--accent);">1</span>
+            </div>
+            <input type="range" id="slider-c" min="-5" max="5" step="1" value="1" oninput="updateGraph4()" />
+          </div>
+
+          <div class="input-group">
+            <label for="q4-berimpit">1. Jika c = 1 (Garis 2: y = 2x + 1), pada nilai <strong>a</strong> berapa kedua garis berimpit?</label>
+            <select id="q4-berimpit">
+              <option value="">-- Pilih jawaban --</option>
+              <option value="0">a = 0</option>
+              <option value="1">a = 1</option>
+              <option value="2">a = 2</option>
+              <option value="-2">a = -2</option>
+            </select>
+          </div>
+
+          <div class="input-group">
+            <label for="q4-sejajar">2. Ubah slider c = 3 (Garis 2: y = 2x + 3). Nilai <strong>a</strong> berapa yang membuat kedua garis sejajar (tidak pernah bertemu)?</label>
+            <select id="q4-sejajar">
+              <option value="">-- Pilih jawaban --</option>
+              <option value="2">a = 2</option>
+              <option value="3">a = 3</option>
+              <option value="-2">a = -2</option>
+              <option value="tidak">Tidak ada nilai a</option>
+            </select>
+          </div>
+
+          <button class="btn" onclick="checkLayar4()">Periksa Eksplorasi</button>
+          <div class="feedback" id="fb-4"></div>
+        </div>
+      </div>
+
+      <div class="screen-footer">
+        <button class="btn btn-outline" onclick="goToScreen(3)">← Sebelumnya</button>
+        <button class="btn" onclick="goToScreen(5)">Lanjut ke Layar 5 →</button>
+      </div>
+    </section>
+
+    <!-- LAYAR 5: PERTIDAKSAMAAN SATU VARIABEL + SNAPSHOT DISKUSI -->
+    <section class="screen" id="screen-5">
+      <span class="badge">Layar 5 dari 5 • Pertidaksamaan Linear Satu Variabel</span>
+      <h2>Ingat Aturan Tanda Pertidaksamaan!</h2>
+      <p class="lead">Tentukan himpunan penyelesaian dari dua pertidaksamaan berikut sebelum kita melangkah ke sistem pertidaksamaan dua variabel.</p>
+
+      <div class="split-grid">
+        <div class="paket-box" style="padding: 1.25rem;">
+          <h3>Soal 5a: <code>3x − 5 &lt; 10</code></h3>
+          <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem;">Selesaikan untuk x:</p>
+          <div class="input-row">
+            <strong>x</strong>
+            <select id="sign-5a" style="width: 90px;">
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
+              <option value="<=">&le;</option>
+              <option value=">=">&ge;</option>
+            </select>
+            <input type="number" id="val-5a" placeholder="?" />
+          </div>
+        </div>
+
+        <div class="paket-box" style="padding: 1.25rem;">
+          <h3>Soal 5b: <code>−2x &le; 6</code></h3>
+          <p style="font-size: 0.9rem; color: var(--muted); margin-bottom: 0.75rem;">Hati-hati saat membagi dengan bilangan negatif:</p>
+          <div class="input-row">
+            <strong>x</strong>
+            <select id="sign-5b" style="width: 90px;">
+              <option value="<=">&le;</option>
+              <option value=">=">&ge;</option>
+              <option value="<">&lt;</option>
+              <option value=">">&gt;</option>
+            </select>
+            <input type="number" id="val-5b" placeholder="?" />
+          </div>
+        </div>
+      </div>
+
+      <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 0.5rem;">
+        <button class="btn" onclick="checkLayar5()">Periksa Jawaban</button>
+        <button class="btn btn-outline" onclick="toggleSnapshot()">🔍 Mode Diskusi Kelas (Snapshot 5b)</button>
+      </div>
+
+      <div class="feedback" id="fb-5"></div>
+
+      <!-- Fitur Snapshot Diskusi Guru -->
+      <div class="callout" id="snapshot-box" style="display: none; margin-top: 1.25rem;">
+        <div class="callout-title">📸 Diskusi Kelas: Dua Jawaban Berbeda pada Soal 5b (−2x &le; 6)</div>
+        <p>Perhatikan dua jawaban siswa tanpa nama berikut. <strong>Uji nilai x = 0 ke soal awal (−2x &le; 6)</strong>. Jawaban mana yang benar?</p>
+        <div class="snapshot-grid">
+          <div class="snap-card">
+            <strong>Jawaban Siswa A:</strong> <code>x &le; −3</code><br/>
+            <span style="font-size: 0.85rem; color: var(--muted);">Jika x = 0 diuji: −2(0) = 0 &le; 6 (Benar), padahal 0 tidak &le; −3!</span>
+          </div>
+          <div class="snap-card" style="border-color: var(--success);">
+            <strong>Jawaban Siswa B:</strong> <code>x &ge; −3</code><br/>
+            <span style="font-size: 0.85rem; color: var(--success);">Jika x = 0 diuji: −2(0) = 0 &le; 6 (Benar), dan 0 &ge; −3 juga Benar! Tanda dibalik karena dibagi −2.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="screen-footer">
+        <button class="btn btn-outline" onclick="goToScreen(4)">← Sebelumnya</button>
+        <button class="btn" style="background: var(--success);" onclick="finishApersepsi()">Selesai Apersepsi ✔</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    Linquad • Modul Interaktif Matematika Kelas X (SPLTV & SPtLDV)
+  </footer>
+
+  <script>
+    let currentScreen = 1;
+    let selectedMC2 = null;
+    let showIntersection3 = false;
+
+    function goToScreen(num) {
+      document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+      document.getElementById('screen-' + num).classList.add('active');
+
+      document.querySelectorAll('.step-btn').forEach((btn, idx) => {
+        btn.classList.remove('active');
+        if (idx + 1 === num) btn.classList.add('active');
+      });
+
+      currentScreen = num;
+      if (num === 3) drawGraph3();
+      if (num === 4) updateGraph4();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function markDone(screenNum) {
+      const btn = document.querySelectorAll('.step-btn')[screenNum - 1];
+      if (btn) btn.classList.add('done');
+    }
+
+    // --- LAYAR 2 ---
+    function selectMC2(choice, el) {
+      selectedMC2 = choice;
+      document.querySelectorAll('#mc2-options .option-card').forEach(c => {
+        c.classList.remove('selected', 'correct', 'wrong');
+      });
+      el.classList.add('selected');
+    }
+
+    function checkMC2() {
+      const fb = document.getElementById('fb-2');
+      if (!selectedMC2) {
+        fb.className = 'feedback show error';
+        fb.innerHTML = 'Silakan pilih salah satu jawaban (A, B, C, atau D) terlebih dahulu.';
+        return;
+      }
+
+      const cards = document.querySelectorAll('#mc2-options .option-card');
+      cards.forEach(c => c.classList.remove('correct', 'wrong'));
+
+      if (selectedMC2 === 'A') {
+        cards[0].classList.add('correct');
+        fb.className = 'feedback show success';
+        fb.innerHTML = '<strong>Tepat sekali!</strong> Persamaan linear memiliki ciri setiap variabel berpangkat 1 dan tidak ada perkalian antarvariabel maupun variabel di penyebut.';
+        markDone(2);
+      } else {
+        const idx = ['A', 'B', 'C', 'D'].indexOf(selectedMC2);
+        cards[idx].classList.add('wrong');
+        fb.className = 'feedback show error';
+        fb.innerHTML = '<strong>Belum tepat.</strong> Ingat: pada persamaan linear, setiap variabel harus berpangkat 1 dan tidak ada perkalian antarvariabel (seperti xy) atau variabel di penyebut (3/x). Coba lagi!';
+      }
+    }
+
+    // --- LAYAR 3 ---
+    function checkLayar3() {
+      const buku = parseFloat(document.getElementById('ans-buku').value);
+      const pensil = parseFloat(document.getElementById('ans-pensil').value);
+      const fb = document.getElementById('fb-3');
+
+      if (isNaN(buku) || isNaN(pensil)) {
+        fb.className = 'feedback show error';
+        fb.innerHTML = 'Masukkan kedua harga satuan terlebih dahulu.';
+        return;
+      }
+
+      if (buku === 2000 && pensil === 4000) {
+        fb.className = 'feedback show success';
+        fb.innerHTML = '<strong>Benar!</strong> Dari 5b + 2p = 18.000 dan b + 2p = 10.000, diperoleh 4b = 8.000 → 1 buku tulis = <strong>Rp2.000</strong> dan 1 pensil = <strong>Rp4.000</strong>. Cocok dengan titik potong (2, 4) di grafik!';
+        showIntersection3 = true;
+        drawGraph3();
+        markDone(3);
+      } else {
+        fb.className = 'feedback show error';
+        fb.innerHTML = '<strong>Masih kurang pas.</strong> Petunjuk: Kurangkan Paket A dengan Paket B untuk menghilangkan 2 pensil. Berapa selisih harganya untuk 4 buku tulis?';
+      }
+    }
+
+    function drawGraph3() {
+      const canvas = document.getElementById('canvas3');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const pad = 40;
+      const maxX = 6, maxY = 10;
+      const toPxX = x => pad + (x / maxX) * (w - pad * 1.5);
+      const toPxY = y => h - pad - (y / maxY) * (h - pad * 1.5);
+
+      // Grid
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      for (let x = 0; x <= maxX; x++) {
+        ctx.beginPath(); ctx.moveTo(toPxX(x), toPxY(0)); ctx.lineTo(toPxX(x), toPxY(maxY)); ctx.stroke();
+      }
+      for (let y = 0; y <= maxY; y += 2) {
+        ctx.beginPath(); ctx.moveTo(toPxX(0), toPxY(y)); ctx.lineTo(toPxX(maxX), toPxY(y)); ctx.stroke();
+      }
+
+      // Axes
+      ctx.strokeStyle = '#475569';
+      ctx.lineWidth = 2;
+      ctx.beginPath();
+      ctx.moveTo(toPxX(0), toPxY(maxY)); ctx.lineTo(toPxX(0), toPxY(0)); ctx.lineTo(toPxX(maxX), toPxY(0));
+      ctx.stroke();
+
+      // Labels
+      ctx.fillStyle = '#475569';
+      ctx.font = '12px sans-serif';
+      for (let x = 1; x <= maxX; x++) ctx.fillText(x, toPxX(x) - 4, toPxY(0) + 18);
+      for (let y = 2; y <= maxY; y += 2) ctx.fillText(y, toPxX(0) - 22, toPxY(y) + 4);
+      ctx.fillText('x (buku)', toPxX(maxX) - 25, toPxY(0) + 32);
+      ctx.fillText('y (pensil)', toPxX(0) - 30, toPxY(maxY) - 8);
+
+      // Line 1: 5x + 2y = 18 => y = (18 - 5x)/2
+      ctx.strokeStyle = '#2563eb';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(toPxX(0), toPxY(9));
+      ctx.lineTo(toPxX(3.6), toPxY(0));
+      ctx.stroke();
+
+      // Line 2: x + 2y = 10 => y = (10 - x)/2
+      ctx.strokeStyle = '#f97316';
+      ctx.lineWidth = 2.5;
+      ctx.beginPath();
+      ctx.moveTo(toPxX(0), toPxY(5));
+      ctx.lineTo(toPxX(6), toPxY(2));
+      ctx.stroke();
+
+      // Intersection (2, 4)
+      if (showIntersection3) {
+        ctx.fillStyle = '#16a34a';
+        ctx.beginPath();
+        ctx.arc(toPxX(2), toPxY(4), 6, 0, Math.PI * 2);
+        ctx.fill();
+        ctx.fillStyle = '#14532d';
+        ctx.font = 'bold 13px sans-serif';
+        ctx.fillText('(2, 4)', toPxX(2) + 10, toPxY(4) - 6);
+      }
+    }
+
+    // --- LAYAR 4 ---
+    function updateGraph4() {
+      const a = parseFloat(document.getElementById('slider-a').value);
+      const c = parseFloat(document.getElementById('slider-c').value);
+
+      document.getElementById('val-a').textContent = a;
+      document.getElementById('lbl-a').textContent = a;
+      document.getElementById('val-c').textContent = c;
+      document.getElementById('lbl-c').textContent = c;
+
+      const canvas = document.getElementById('canvas4');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+      const w = canvas.width, h = canvas.height;
+      ctx.clearRect(0, 0, w, h);
+
+      const min = -6, max = 6;
+      const toPxX = x => ((x - min) / (max - min)) * w;
+      const toPxY = y => h - ((y - min) / (max - min)) * h;
+
+      // Grid
+      ctx.strokeStyle = '#e2e8f0';
+      ctx.lineWidth = 1;
+      for (let i = min; i <= max; i++) {
+        ctx.beginPath(); ctx.moveTo(toPxX(i), 0); ctx.lineTo(toPxX(i), h); ctx.stroke();
+        ctx.beginPath(); ctx.moveTo(0, toPxY(i)); ctx.lineTo(w, toPxY(i)); ctx.stroke();
+      }
+
+      // Axes
+      ctx.strokeStyle = '#64748b';
+      ctx.lineWidth = 1.5;
+      ctx.beginPath(); ctx.moveTo(toPxX(0), 0); ctx.lineTo(toPxX(0), h); ctx.stroke();
+      ctx.beginPath(); ctx.moveTo(0, toPxY(0)); ctx.lineTo(w, toPxY(0)); ctx.stroke();
+
+      // Garis 2 (Oranye): y = 2x + c
+      ctx.strokeStyle = '#f97316';
+      ctx.lineWidth = 3;
+      ctx.beginPath();
+      ctx.moveTo(toPxX(min), toPxY(2 * min + c));
+      ctx.lineTo(toPxX(max), toPxY(2 * max + c));
+      ctx.stroke();
+
+      // Garis 1 (Biru): y = ax + 1
+      ctx.strokeStyle = '#2563eb';
+      ctx.lineWidth = 2.5;
+      if (a === 2 && c === 1) ctx.setLineDash([8, 6]);
+      else ctx.setLineDash([]);
+      ctx.beginPath();
+      ctx.moveTo(toPxX(min), toPxY(a * min + 1));
+      ctx.lineTo(toPxX(max), toPxY(a * max + 1));
+      ctx.stroke();
+      ctx.setLineDash([]);
+    }
+
+    function checkLayar4() {
+      const q1 = document.getElementById('q4-berimpit').value;
+      const q2 = document.getElementById('q4-sejajar').value;
+      const fb = document.getElementById('fb-4');
+
+      if (!q1 || !q2) {
+        fb.className = 'feedback show error';
+        fb.innerHTML = 'Silakan pilih jawaban untuk kedua pertanyaan.';
+        return;
+      }
+
+      if (q1 === '2' && q2 === '2') {
+        fb.className = 'feedback show success';
+        fb.innerHTML = '<strong>Luar biasa!</strong> Kedua garis memiliki kemiringan sama saat <strong>a = 2</strong>. Jika konstantanya juga sama (c = 1), keduanya berimpit; jika konstantanya berbeda (c = 3), keduanya sejajar dan tidak berpotongan.';
+        markDone(4);
+      } else {
+        fb.className = 'feedback show error';
+        fb.innerHTML = '<strong>Belum tepat.</strong> Coba geser slider a ke angka 2, lalu amati hubungan kedua garis saat c = 1 dan saat c = 3.';
+      }
+    }
+
+    // --- LAYAR 5 ---
+    function checkLayar5() {
+      const s5a = document.getElementById('sign-5a').value;
+      const v5a = parseFloat(document.getElementById('val-5a').value);
+      const s5b = document.getElementById('sign-5b').value;
+      const v5b = parseFloat(document.getElementById('val-5b').value);
+      const fb = document.getElementById('fb-5');
+
+      if (isNaN(v5a) || isNaN(v5b)) {
+        fb.className = 'feedback show error';
+        fb.innerHTML = 'Lengkapi kedua jawaban pertidaksamaan terlebih dahulu.';
+        return;
+      }
+
+      const ok5a = (s5a === '<' && v5a === 5);
+      const ok5b = (s5b === '>=' && v5b === -3);
+
+      if (ok5a && ok5b) {
+        fb.className = 'feedback show success';
+        fb.innerHTML = '<strong>Sempurna!</strong> 5a: <code>x &lt; 5</code> dan 5b: <code>x &ge; −3</code> (tanda pertidaksamaan dibalik karena kedua ruas dibagi bilangan negatif −2).';
+        markDone(5);
+      } else {
+        let msg = '<strong>Periksa kembali:</strong> ';
+        if (!ok5a) msg += 'Pada 5a, 3x &lt; 15 sehingga x &lt; 5. ';
+        if (!ok5b) msg += 'Pada 5b, saat membagi −2x &le; 6 dengan −2, tanda &le; harus dibalik menjadi &ge;.';
+        fb.className = 'feedback show error';
+        fb.innerHTML = msg;
+      }
+    }
+
+    function toggleSnapshot() {
+      const box = document.getElementById('snapshot-box');
+      box.style.display = (box.style.display === 'none') ? 'block' : 'none';
+    }
+
+    function finishApersepsi() {
+      alert('Selamat! Kamu telah menuntaskan seluruh 5 layar Apersepsi di Linquad dan siap masuk ke konteks utama "Patungan Nota Kedai".');
+    }
+  </script>
+</body>
+</html>
