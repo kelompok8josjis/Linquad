@@ -2496,3 +2496,1566 @@
 </body>
 </html>
 
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>LinQuad Level Up! — Portal Pembelajaran Matematika SMA Kelas 10</title>
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          animation: {
+            'fade-in': 'fadeIn 0.25s ease-out forwards',
+            'slide-up': 'slideUp 0.3s cubic-bezier(0.16, 1, 0.3, 1) forwards',
+            'shake': 'shake 0.4s cubic-bezier(.36,.07,.19,.97) both',
+          },
+          keyframes: {
+            fadeIn: {
+              '0%': { opacity: '0' },
+              '100%': { opacity: '1' },
+            },
+            slideUp: {
+              '0%': { opacity: '0', transform: 'translateY(12px) scale(0.98)' },
+              '100%': { opacity: '1', transform: 'translateY(0) scale(1)' },
+            },
+            shake: {
+              '10%, 90%': { transform: 'translate3d(-2px, 0, 0)' },
+              '20%, 80%': { transform: 'translate3d(4px, 0, 0)' },
+              '30%, 50%, 70%': { transform: 'translate3d(-6px, 0, 0)' },
+              '40%, 60%': { transform: 'translate3d(6px, 0, 0)' },
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    .bg-grid-pattern {
+      background-image: radial-gradient(#cbd5e1 1px, transparent 1px);
+      background-size: 24px 24px;
+    }
+    ::-webkit-scrollbar {
+      width: 7px;
+      height: 7px;
+    }
+    ::-webkit-scrollbar-track {
+      background: #f1f5f9;
+    }
+    ::-webkit-scrollbar-thumb {
+      background: #cbd5e1;
+      border-radius: 9999px;
+    }
+    ::-webkit-scrollbar-thumb:hover {
+      background: #94a3b8;
+    }
+  </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased min-h-screen flex flex-col overflow-x-hidden selection:bg-indigo-600 selection:text-white">
+  <!-- WADAH NOTIFIKASI TOAST -->
+  <div id="toast-container" class="fixed bottom-4 right-4 left-4 sm:left-auto sm:w-96 z-50 flex flex-col gap-2.5 pointer-events-none"></div>
+  
+  <!-- NAVBAR UTAMA -->
+  <header class="sticky top-0 z-30 bg-white/90 backdrop-blur-md border-b border-slate-200/80">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-3">
+      <a href="#" onclick="goHome(); return false;" class="flex items-center gap-3 group min-w-0">
+        <div class="w-10 h-10 rounded-xl bg-gradient-to-br from-indigo-600 to-emerald-500 flex items-center justify-center text-white font-extrabold shadow-md shadow-indigo-500/20 group-hover:scale-105 transition-transform shrink-0">
+          LQ
+        </div>
+        <div class="truncate">
+          <span class="text-lg sm:text-xl font-extrabold tracking-tight text-slate-900">
+            LinQuad <span class="text-indigo-600">Level Up!</span>
+          </span>
+          <p class="text-[11px] font-medium text-slate-500 hidden sm:block -mt-0.5">
+            Matematika SMA Kelas 10 • Tahun Ajaran 2026/2027
+          </p>
+        </div>
+      </a>
+      <div id="navbar-actions" class="flex items-center gap-2 sm:gap-3 shrink-0">
+        <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200/80">
+          <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+          <span>Tahun Ajaran 2026/2027</span>
+        </span>
+      </div>
+    </div>
+  </header>
+
+  <!-- VIEW 1: HALAMAN AWAL (LANDING) -->
+  <main id="view-landing" class="flex-1 relative flex items-center justify-center overflow-hidden">
+    <div class="absolute inset-0 bg-grid-pattern opacity-45 pointer-events-none"></div>
+    <div class="absolute -top-24 -left-24 w-96 h-96 bg-indigo-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="absolute bottom-0 -right-24 w-96 h-96 bg-emerald-200/40 rounded-full blur-3xl pointer-events-none"></div>
+    <div class="relative w-full max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+      <div class="text-center max-w-3xl mx-auto mb-10 sm:mb-12">
+        <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white border border-slate-200 shadow-xs text-xs font-bold text-indigo-700 mb-5">
+          <span>Portal Pembelajaran Matematika SMA Kelas 10 • Fase E</span>
+        </div>
+        <h1 class="text-4xl sm:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12] mb-4">
+          <span class="text-transparent bg-clip-text bg-gradient-to-r from-indigo-600 to-emerald-600">LinQuad Level Up!</span>
+        </h1>
+        <p class="text-base sm:text-lg text-slate-600 leading-relaxed">
+          Portal pembelajaran interaktif Matematika SMA Kelas 10 yang mencakup <strong>Bab 4: Sistem Persamaan &amp; Pertidaksamaan Linear</strong> dan <strong>Bab 5: Persamaan &amp; Fungsi Kuadrat</strong>.
+        </p>
+      </div>
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6 sm:gap-8 max-w-4xl mx-auto">
+        <!-- Kartu 1: Masuk Guru -->
+        <div class="group bg-white rounded-3xl p-6 sm:p-8 border-2 border-slate-200/90 hover:border-emerald-500 shadow-sm hover:shadow-xl hover:shadow-emerald-500/10 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-500 to-teal-600 text-white flex items-center justify-center shadow-lg shadow-emerald-500/25 group-hover:scale-105 transition-transform">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M4.26 10.147a60.436 60.436 0 00-.491 6.347A48.627 48.627 0 0112 20.904a48.627 48.627 0 018.232-4.41 60.46 60.46 0 00-.491-6.347m-15.482 0a50.57 50.57 0 00-2.658-.813A59.905 59.905 0 0112 3.493a59.902 59.902 0 0110.399 5.84c-.896.248-1.783.52-2.658.814m-15.482 0A50.697 50.697 0 0112 13.489a50.702 50.702 0 017.74-3.342M6.75 15a.75.75 0 100-1.5.75.75 0 000 1.5zm0 0v-3.675A55.378 55.378 0 0112 8.443m-7.007 11.55A5.981 5.981 0 006.75 15.75v-1.5" />
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-emerald-50 text-emerald-700 border border-emerald-200">
+                Tenaga Pendidik
+              </span>
+            </div>
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-2.5">Masuk sebagai Guru</h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-7">
+              Kelola kelas dan kode akses kelas, publikasikan materi, tugas, serta pengumuman, dan pantau progres maupun penilaian murid secara real-time.
+            </p>
+          </div>
+          <button
+            type="button"
+            onclick="showView('view-teacher-login')"
+            class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-700 hover:to-teal-700 text-white font-bold text-sm sm:text-base shadow-md shadow-emerald-600/20 flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
+          >
+            <span>Masuk sebagai Guru</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+        </div>
+        <!-- Kartu 2: Masuk Murid -->
+        <div class="group bg-white rounded-3xl p-6 sm:p-8 border-2 border-slate-200/90 hover:border-indigo-500 shadow-sm hover:shadow-xl hover:shadow-indigo-500/10 transition-all duration-300 flex flex-col justify-between">
+          <div>
+            <div class="flex items-center justify-between mb-6">
+              <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-indigo-600 to-blue-600 text-white flex items-center justify-center shadow-lg shadow-indigo-600/25 group-hover:scale-105 transition-transform">
+                <svg class="w-7 h-7" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+                </svg>
+              </div>
+              <span class="px-3 py-1 rounded-full text-xs font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200">
+                Ruang Belajar Murid
+              </span>
+            </div>
+            <h2 class="text-2xl font-extrabold text-slate-900 mb-2.5">Masuk sebagai Murid</h2>
+            <p class="text-slate-600 text-sm sm:text-base leading-relaxed mb-7">
+              Masukkan nama lengkap dan kode kelas dari guru untuk mengakses materi pembelajaran, mengerjakan tugas latihan, dan melihat hasil penilaian.
+            </p>
+          </div>
+          <button
+            type="button"
+            onclick="showView('view-student-login')"
+            class="w-full py-3.5 px-5 rounded-2xl bg-gradient-to-r from-indigo-600 to-blue-600 hover:from-indigo-700 hover:to-blue-700 text-white font-bold text-sm sm:text-base shadow-md shadow-indigo-600/20 flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
+          >
+            <span>Masuk sebagai Murid</span>
+            <svg class="w-5 h-5 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <!-- VIEW 2: HALAMAN LOGIN GURU -->
+  <section id="view-teacher-login" class="hidden flex-1 flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-md animate-slide-up">
+      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-200/90 overflow-hidden">
+        <div class="px-6 sm:px-8 pt-7 pb-6 bg-gradient-to-r from-emerald-600 to-teal-600 text-white">
+          <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/20 text-white mb-2.5">
+            Portal Tenaga Pendidik
+          </span>
+          <h1 class="text-2xl font-extrabold tracking-tight">Masuk sebagai Guru</h1>
+          <p class="text-xs sm:text-sm text-emerald-50 mt-1">
+            Masuk untuk mengelola kode kelas, materi pembelajaran, dan penilaian murid.
+          </p>
+        </div>
+        <form id="form-teacher-login" onsubmit="handleTeacherLogin(event)" novalidate class="p-6 sm:p-8 space-y-4">
+          <div id="teacher-login-error" class="hidden p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm font-medium flex items-start gap-2.5">
+            <svg class="w-5 h-5 text-rose-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+            </svg>
+            <span id="teacher-login-error-text">Email/NIP dan kata sandi wajib diisi.</span>
+          </div>
+          <div>
+            <label for="teacher-login-id" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+              Email atau NIP Guru
+            </label>
+            <input
+              type="text"
+              id="teacher-login-id"
+              autocomplete="username"
+              placeholder="Contoh: budi.santoso@sman1.sch.id"
+              oninput="hideTeacherLoginError()"
+              class="w-full px-4 py-3 rounded-xl border border-slate-300 text-sm text-slate-900 focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label for="teacher-login-pass" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+              Kata Sandi
+            </label>
+            <div class="relative">
+              <input
+                type="password"
+                id="teacher-login-pass"
+                autocomplete="current-password"
+                placeholder="Masukkan kata sandi"
+                oninput="hideTeacherLoginError()"
+                class="w-full px-4 py-3 pr-11 rounded-xl border border-slate-300 text-sm text-slate-900 focus:border-emerald-600 focus:ring-4 focus:ring-emerald-600/10 outline-none transition-all"
+              />
+              <button
+                type="button"
+                onclick="toggleTeacherPassword()"
+                aria-label="Tampilkan atau sembunyikan kata sandi"
+                class="absolute right-3 top-1/2 -translate-y-1/2 text-slate-400 hover:text-slate-600 p-1"
+              >
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+                  <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+                </svg>
+              </button>
+            </div>
+          </div>
+          <button
+            type="button"
+            onclick="fillTeacherAccount()"
+            class="w-full py-2.5 px-4 rounded-xl bg-slate-100 hover:bg-slate-200/80 text-slate-700 text-xs font-bold flex items-center justify-center gap-2 border border-slate-200 transition-colors"
+          >
+            <svg class="w-4 h-4 text-emerald-600" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M11.3 1.046A1 1 0 0112 2v5h4a1 1 0 01.82 1.573l-7 10A1 1 0 018 18v-5H4a1 1 0 01-.82-1.573l7-10a1 1 0 011.12-.38z" clip-rule="evenodd" />
+            </svg>
+            <span>Isi Akun Guru</span>
+          </button>
+          <button
+            type="submit"
+            class="w-full py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-lg shadow-emerald-600/20 transition-all active:scale-[0.99]"
+          >
+            Masuk ke Dashboard Guru
+          </button>
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+            <button type="button" onclick="goHome()" class="text-slate-500 hover:text-slate-800 transition-colors">
+              &larr; Halaman Awal
+            </button>
+            <button type="button" onclick="showView('view-student-login')" class="text-indigo-600 hover:text-indigo-800 transition-colors">
+              Masuk sebagai Murid &rarr;
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 3: HALAMAN LOGIN MURID -->
+  <section id="view-student-login" class="hidden flex-1 flex items-center justify-center px-4 py-10">
+    <div class="w-full max-w-md animate-slide-up">
+      <div class="bg-white rounded-3xl shadow-xl shadow-slate-200/60 border border-slate-200/90 overflow-hidden">
+        <div class="px-6 sm:px-8 pt-7 pb-6 bg-gradient-to-r from-indigo-600 to-blue-600 text-white">
+          <span class="inline-block px-3 py-1 rounded-full text-[11px] font-bold uppercase tracking-wider bg-white/20 text-white mb-2.5">
+            Ruang Belajar Murid
+          </span>
+          <h1 class="text-2xl font-extrabold tracking-tight">Masuk sebagai Murid</h1>
+          <p class="text-xs sm:text-sm text-indigo-100 mt-1">
+            Masukkan nama lengkap dan kode kelas yang diberikan oleh gurumu untuk membuka materi.
+          </p>
+        </div>
+        <form id="form-student-login" onsubmit="handleStudentLogin(event)" novalidate class="p-6 sm:p-8 space-y-5">
+          <div id="student-login-error" class="hidden p-3.5 rounded-2xl bg-rose-50 border border-rose-200 text-rose-700 text-xs sm:text-sm font-medium flex items-start gap-2.5">
+            <svg class="w-5 h-5 text-rose-600 shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20">
+              <path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-8-5a.75.75 0 01.75.75v4.5a.75.75 0 01-1.5 0v-4.5A.75.75 0 0110 5zm0 10a1 1 0 100-2 1 1 0 000 2z" clip-rule="evenodd" />
+            </svg>
+            <span id="student-login-error-text" class="leading-snug">
+              Kode kelas tidak valid atau belum terdaftar.
+            </span>
+          </div>
+          <div>
+            <label for="student-login-name" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+              Nama Lengkap Murid
+            </label>
+            <input
+              type="text"
+              id="student-login-name"
+              autocomplete="name"
+              placeholder="Tuliskan nama lengkapmu"
+              oninput="hideStudentLoginError()"
+              class="w-full px-4 py-3.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 outline-none transition-all"
+            />
+          </div>
+          <div>
+            <label for="student-login-code" class="block text-xs font-bold uppercase tracking-wider text-slate-600 mb-1.5">
+              Kode Kelas dari Guru
+            </label>
+            <input
+              type="text"
+              id="student-login-code"
+              maxlength="24"
+              autocomplete="off"
+              placeholder="Masukkan kode kelas"
+              oninput="this.value = this.value.toUpperCase().replace(/\s+/g, ''); hideStudentLoginError();"
+              class="w-full px-4 py-3.5 rounded-xl border-2 border-slate-200 focus:border-indigo-600 focus:ring-4 focus:ring-indigo-600/10 outline-none font-mono font-bold text-lg tracking-widest uppercase text-slate-900 placeholder:font-sans placeholder:font-normal placeholder:text-sm placeholder:tracking-normal transition-all"
+            />
+          </div>
+          <button
+            type="submit"
+            class="w-full py-3.5 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm sm:text-base shadow-lg shadow-indigo-600/20 flex items-center justify-center gap-2 transition-all active:scale-[0.99]"
+          >
+            <span>Masuk ke Ruang Kelas</span>
+            <svg class="w-5 h-5" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+            </svg>
+          </button>
+          <div class="pt-3 border-t border-slate-100 flex items-center justify-between text-xs font-semibold">
+            <button type="button" onclick="goHome()" class="text-slate-500 hover:text-slate-800 transition-colors">
+              &larr; Halaman Awal
+            </button>
+            <button type="button" onclick="showView('view-teacher-login')" class="text-emerald-600 hover:text-emerald-800 transition-colors">
+              Masuk sebagai Guru &rarr;
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 4: HALAMAN MATERI MURID -->
+  <section id="view-student-classroom" class="hidden flex-1 flex flex-col">
+    <div class="max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+      <div class="rounded-3xl bg-gradient-to-r from-indigo-600 via-indigo-700 to-blue-700 text-white p-6 sm:p-8 shadow-lg shadow-indigo-600/15 relative overflow-hidden">
+        <div class="absolute right-0 top-0 w-64 h-64 bg-white/10 rounded-full -translate-y-1/2 translate-x-1/4 pointer-events-none"></div>
+        <div class="relative flex flex-col lg:flex-row lg:items-center justify-between gap-6">
+          <div class="space-y-2.5 max-w-2xl">
+            <div class="flex flex-wrap items-center gap-2">
+              <span class="px-3 py-1 rounded-full text-xs font-mono font-bold bg-slate-900/30 text-indigo-100 border border-white/15">
+                Kode Kelas: <span id="student-class-code"></span>
+              </span>
+              <span class="px-3 py-1 rounded-full text-xs font-bold bg-white/20 text-white">
+                Murid: <span id="student-banner-name"></span>
+              </span>
+            </div>
+            <h1 id="student-class-name" class="text-xl sm:text-3xl font-extrabold tracking-tight leading-snug"></h1>
+            <p class="text-xs sm:text-sm text-indigo-100 flex items-center gap-2">
+              <svg class="w-4 h-4 text-indigo-200 shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 6a3.75 3.75 0 11-7.5 0 3.75 3.75 0 017.5 0zM4.501 20.118a7.5 7.5 0 0114.998 0A17.933 17.933 0 0112 21.75c-2.676 0-5.216-.584-7.499-1.632z" />
+              </svg>
+              <span>Guru Pengampu: <strong id="student-class-teacher" class="text-white"></strong></span>
+            </p>
+          </div>
+          <div class="flex flex-col sm:flex-row lg:flex-col items-stretch sm:items-center lg:items-end gap-3 shrink-0">
+            <div class="bg-white/15 backdrop-blur-md border border-white/20 rounded-2xl p-4 sm:min-w-[250px]">
+              <div class="flex items-center justify-between text-xs font-semibold text-indigo-100 mb-1.5">
+                <span>Progres Penyelesaian</span>
+                <span id="student-progress-text" class="text-white font-bold">0/0 Selesai (0%)</span>
+              </div>
+              <div class="w-full h-2.5 bg-slate-900/30 rounded-full overflow-hidden">
+                <div id="student-progress-bar" class="h-full bg-emerald-400 rounded-full transition-all duration-500" style="width: 0%"></div>
+              </div>
+            </div>
+            <button
+              type="button"
+              onclick="leaveStudentClass()"
+              class="inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-white text-indigo-700 hover:bg-indigo-50 font-bold text-xs sm:text-sm shadow-sm transition-colors"
+            >
+              <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M15.75 9V5.25A2.25 2.25 0 0013.5 3h-6a2.25 2.25 0 00-2.25 2.25v13.5A2.25 2.25 0 007.5 21h6a2.25 2.25 0 002.25-2.25V15m3 0l3-3m0 0l-3-3m3 3H9" />
+              </svg>
+              <span>Keluar Kelas</span>
+            </button>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-2 overflow-x-auto pb-1">
+        <button type="button" onclick="setStudentFilter('Semua')" data-filter="Semua" class="student-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-xs transition-all whitespace-nowrap">
+          Semua (<span id="st-count-all">0</span>)
+        </button>
+        <button type="button" onclick="setStudentFilter('Materi')" data-filter="Materi" class="student-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all whitespace-nowrap">
+          Materi (<span id="st-count-materi">0</span>)
+        </button>
+        <button type="button" onclick="setStudentFilter('Tugas')" data-filter="Tugas" class="student-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all whitespace-nowrap">
+          Tugas (<span id="st-count-tugas">0</span>)
+        </button>
+        <button type="button" onclick="setStudentFilter('Pengumuman')" data-filter="Pengumuman" class="student-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all whitespace-nowrap">
+          Pengumuman (<span id="st-count-pengumuman">0</span>)
+        </button>
+      </div>
+      <div id="student-materials-container" class="space-y-4">
+        <!-- Dirender dinamis -->
+      </div>
+    </div>
+  </section>
+
+  <!-- VIEW 5: DASHBOARD GURU -->
+  <section id="view-teacher-dashboard" class="hidden flex-1 flex flex-col">
+    <div class="max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-8">
+      <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm flex flex-col lg:flex-row lg:items-center justify-between gap-4">
+        <div class="flex items-center gap-4">
+          <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-700 font-extrabold text-base flex items-center justify-center shrink-0">
+            BS
+          </div>
+          <div>
+            <span class="inline-block text-[11px] font-bold uppercase tracking-wider text-emerald-600 mb-0.5">
+              Dashboard Tenaga Pendidik
+            </span>
+            <h1 class="text-lg sm:text-xl font-extrabold text-slate-900">
+              Budi Santoso, S.Pd. &bull; <span class="font-mono text-sm sm:text-base font-semibold text-slate-600">NIP 198504122010011008</span>
+            </h1>
+          </div>
+        </div>
+        <div class="flex flex-wrap items-center gap-2.5">
+          <div class="inline-flex items-center gap-2 px-3.5 py-2 rounded-xl bg-emerald-50 border border-emerald-200/80 text-xs font-bold text-emerald-700">
+            <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
+            <span>Sinkronisasi Real-Time</span>
+          </div>
+        </div>
+      </div>
+      <div class="grid grid-cols-2 lg:grid-cols-4 gap-4">
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Jumlah Kelas</p>
+          <p id="stat-classes" class="text-2xl sm:text-3xl font-extrabold text-slate-900">0 Kelas</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Murid Login</p>
+          <p id="stat-students" class="text-2xl sm:text-3xl font-extrabold text-indigo-600">0 Murid</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Materi Aktif</p>
+          <p id="stat-materials" class="text-2xl sm:text-3xl font-extrabold text-emerald-600">0 Konten</p>
+        </div>
+        <div class="bg-white rounded-2xl p-5 border border-slate-200/90 shadow-xs">
+          <p class="text-xs font-bold uppercase tracking-wider text-slate-400 mb-1">Rata-rata Nilai</p>
+          <p id="stat-avg-score" class="text-2xl sm:text-3xl font-extrabold text-amber-600">-</p>
+        </div>
+      </div>
+      <div class="space-y-4">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Manajemen Kelas &amp; Kode Kelas</h2>
+            <p class="text-xs sm:text-sm text-slate-500">Bagikan kode kelas di bawah ini kepada murid agar dapat masuk ke ruang belajar.</p>
+          </div>
+          <button
+            type="button"
+            onclick="openCreateClassModal()"
+            class="self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white text-xs sm:text-sm font-bold shadow-sm transition-colors"
+          >
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M12 4.5v15m7.5-7.5h-15" />
+            </svg>
+            <span>+ Tambah Kelas</span>
+          </button>
+        </div>
+        <div id="teacher-classes-grid" class="grid grid-cols-1 md:grid-cols-2 gap-5">
+          <!-- Dirender JS -->
+        </div>
+      </div>
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+        <div class="lg:col-span-6 bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm">
+          <div class="mb-5">
+            <h2 class="text-lg font-extrabold text-slate-900">Tambah Materi / Tugas</h2>
+            <p class="text-xs text-slate-500">Konten yang dipublikasikan akan langsung muncul pada halaman materi murid.</p>
+          </div>
+          <form id="form-publish-material" onsubmit="handlePublishMaterial(event)" class="space-y-4">
+            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3.5">
+              <div>
+                <label for="mat-class-select" class="block text-xs font-bold text-slate-700 mb-1.5">Kelas Tujuan</label>
+                <select id="mat-class-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-800 focus:border-emerald-600 outline-none"></select>
+              </div>
+              <div>
+                <label for="mat-category-select" class="block text-xs font-bold text-slate-700 mb-1.5">Kategori</label>
+                <select id="mat-category-select" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm font-semibold text-slate-800 focus:border-emerald-600 outline-none">
+                  <option value="Materi">Materi</option>
+                  <option value="Tugas">Tugas</option>
+                  <option value="Pengumuman">Pengumuman</option>
+                </select>
+              </div>
+            </div>
+            <div>
+              <label for="mat-title-input" class="block text-xs font-bold text-slate-700 mb-1.5">Judul</label>
+              <input type="text" id="mat-title-input" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:border-emerald-600 outline-none" />
+            </div>
+            <div>
+              <label for="mat-summary-input" class="block text-xs font-bold text-slate-700 mb-1.5">Ringkasan Singkat</label>
+              <input type="text" id="mat-summary-input" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:border-emerald-600 outline-none" />
+            </div>
+            <div>
+              <label for="mat-content-input" class="block text-xs font-bold text-slate-700 mb-1.5">Isi Materi Lengkap</label>
+              <textarea id="mat-content-input" rows="4" required class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm text-slate-900 focus:border-emerald-600 outline-none resize-y"></textarea>
+            </div>
+            <div class="rounded-2xl border border-slate-200 bg-slate-50/70 p-4 space-y-3">
+              <label class="inline-flex items-center gap-2.5 cursor-pointer select-none">
+                <input type="checkbox" id="mat-has-quiz-checkbox" onchange="toggleQuizBuilder()" class="w-4 h-4 rounded text-emerald-600 focus:ring-emerald-500 border-slate-300" />
+                <span class="text-xs sm:text-sm font-bold text-slate-800">Tambahkan Soal Latihan / Tugas (Opsional)</span>
+              </label>
+              <div id="quiz-builder-container" class="hidden space-y-3 pt-2 border-t border-slate-200/80">
+                <div id="quiz-questions-list" class="space-y-3"></div>
+                <button type="button" onclick="addQuizQuestionBlock()" class="inline-flex items-center gap-1.5 px-3 py-2 rounded-xl bg-white hover:bg-emerald-50 text-emerald-700 border border-emerald-200 text-xs font-bold transition-colors">
+                  <span>+ Tambah Pertanyaan Lain</span>
+                </button>
+              </div>
+            </div>
+            <button type="submit" class="w-full py-3.5 px-5 rounded-xl bg-emerald-600 hover:bg-emerald-700 text-white font-bold text-sm shadow-md shadow-emerald-600/20 transition-all active:scale-[0.99]">
+              Publikasikan ke Ruang Kelas
+            </button>
+          </form>
+        </div>
+        <div class="lg:col-span-6 bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm">
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-3 mb-5">
+            <div>
+              <h2 class="text-lg font-extrabold text-slate-900">Materi Terpublikasi</h2>
+              <p class="text-xs text-slate-500">Daftar materi, tugas, dan pengumuman aktif di kelas.</p>
+            </div>
+            <select id="teacher-mat-filter" onchange="renderTeacherPublishedMaterials()" class="px-3 py-2 rounded-xl border border-slate-200 bg-slate-50 text-xs font-bold text-slate-700 outline-none max-w-full sm:max-w-[220px]"></select>
+          </div>
+          <div id="teacher-published-list" class="space-y-3"></div>
+        </div>
+      </div>
+      <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-sm space-y-5">
+        <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 border-b border-slate-100 pb-4">
+          <div>
+            <h2 class="text-lg sm:text-xl font-extrabold text-slate-900">Pemantauan Murid Login &amp; Penilaian</h2>
+            <p class="text-xs sm:text-sm text-slate-500">Pantau kehadiran murid, progres penyelesaian, dan berikan nilai.</p>
+          </div>
+          <button type="button" id="btn-toggle-anonymous" onclick="toggleAnonymousMode()" class="self-start sm:self-auto inline-flex items-center gap-2 px-4 py-2.5 rounded-xl text-xs sm:text-sm font-extrabold border transition-all shadow-xs bg-slate-100 text-slate-700 border-slate-300 hover:bg-slate-200/70">
+            <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewBox="0 0 24 24">
+              <path stroke-linecap="round" stroke-linejoin="round" d="M2.036 12.322a1.012 1.012 0 010-.639C3.423 7.51 7.36 4.5 12 4.5c4.638 0 8.573 3.007 9.963 7.178.07.207.07.431 0 .639C20.577 16.49 16.64 19.5 12 19.5c-4.638 0-8.573-3.007-9.963-7.178z" />
+              <path stroke-linecap="round" stroke-linejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
+            </svg>
+            <span id="anon-btn-label">Mode Anonim: NONAKTIF</span>
+          </button>
+        </div>
+        <div id="teacher-students-container"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- MODALS -->
+  <!-- MODAL 1: BACA MATERI -->
+  <div id="modal-student-material" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+    <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-slide-up flex flex-col max-h-[90vh]">
+      <div class="px-6 py-5 border-b border-slate-100 bg-slate-50/90 flex items-start justify-between gap-4">
+        <div class="space-y-1.5">
+          <div class="flex flex-wrap items-center gap-2">
+            <span id="st-modal-badge" class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-indigo-100 text-indigo-700">Materi</span>
+            <span id="st-modal-date" class="text-xs text-slate-500 font-medium">19 Nov 2026</span>
+          </div>
+          <h3 id="st-modal-title" class="text-lg sm:text-xl font-extrabold text-slate-900 leading-snug">Judul Materi</h3>
+          <p id="st-modal-summary" class="text-xs sm:text-sm text-slate-500">Ringkasan materi</p>
+        </div>
+        <button type="button" onclick="closeStudentMaterialModal()" class="w-9 h-9 rounded-full bg-white hover:bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 shrink-0 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div class="p-6 overflow-y-auto space-y-6">
+        <div id="st-modal-content" class="space-y-3 text-sm sm:text-base text-slate-700 leading-relaxed whitespace-pre-line"></div>
+        <div id="st-modal-quiz-section" class="hidden pt-5 border-t border-slate-200 space-y-4">
+          <div class="flex items-center justify-between gap-2">
+            <h4 class="text-base font-extrabold text-slate-900">Soal Latihan / Tugas dari Guru</h4>
+            <span id="st-modal-score-pill" class="hidden px-3 py-1 rounded-full text-xs font-extrabold bg-emerald-100 text-emerald-800">Nilai: 100</span>
+          </div>
+          <div id="st-modal-teacher-feedback" class="hidden p-4 rounded-2xl bg-emerald-50 border border-emerald-200 text-xs sm:text-sm text-emerald-900 space-y-1">
+            <p class="font-bold text-emerald-800">Catatan Umpan Balik dari Guru:</p>
+            <p id="st-modal-feedback-text"></p>
+          </div>
+          <div id="st-modal-questions-wrapper" class="space-y-4"></div>
+          <button type="button" id="btn-submit-student-quiz" onclick="submitStudentQuizAnswers()" class="w-full py-3 px-5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white font-bold text-sm shadow-md shadow-indigo-600/20 transition-all">
+            Kirim Jawaban ke Guru
+          </button>
+        </div>
+      </div>
+      <div class="px-6 py-4 bg-slate-50 border-t border-slate-200/80 flex flex-wrap items-center justify-between gap-3">
+        <button type="button" onclick="closeStudentMaterialModal()" class="px-4 py-2.5 rounded-xl text-xs sm:text-sm font-semibold text-slate-600 hover:bg-slate-200/70 transition-colors">Tutup</button>
+        <button type="button" id="btn-mark-material-done" onclick="toggleMaterialCompletionFromModal()" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-all">Tandai Selesai Dipelajari</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 2: PENILAIAN GURU -->
+  <div id="modal-teacher-grade" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+    <div class="bg-white w-full max-w-3xl rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-slide-up flex flex-col max-h-[90vh]">
+      <div class="px-6 py-5 border-b border-slate-100 bg-slate-50/90 flex items-start justify-between gap-4">
+        <div>
+          <span class="inline-block px-2.5 py-0.5 rounded-full text-[11px] font-bold uppercase tracking-wider bg-indigo-50 text-indigo-700 border border-indigo-200 mb-1.5">
+            Detail Jawaban &amp; Penilaian Murid
+          </span>
+          <h3 id="grade-modal-student-name" class="text-lg sm:text-xl font-extrabold text-slate-900">Nama Murid</h3>
+          <p id="grade-modal-student-meta" class="text-xs text-slate-500 mt-0.5">Kelas &bull; Waktu Login</p>
+        </div>
+        <button type="button" onclick="closeTeacherGradeModal()" class="w-9 h-9 rounded-full bg-white hover:bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 shrink-0 transition-colors">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <div id="grade-modal-body" class="p-6 overflow-y-auto space-y-5"></div>
+      <div class="px-6 py-4 bg-slate-50 border-t border-slate-200/80 flex justify-end">
+        <button type="button" onclick="closeTeacherGradeModal()" class="px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-slate-800 hover:bg-slate-900 text-white transition-colors">Selesai &amp; Tutup</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL 3: TAMBAH KELAS -->
+  <div id="modal-create-class" class="hidden fixed inset-0 z-50 flex items-center justify-center p-4 bg-slate-900/60 backdrop-blur-sm animate-fade-in">
+    <div class="bg-white w-full max-w-md rounded-3xl shadow-2xl border border-slate-200 overflow-hidden animate-slide-up">
+      <div class="px-6 py-5 border-b border-slate-100 bg-emerald-600 text-white flex items-center justify-between">
+        <div>
+          <h3 class="text-lg font-extrabold">Buat Kelas Baru</h3>
+          <p class="text-xs text-emerald-100">Tambahkan kelas Matematika baru beserta kode aksesnya.</p>
+        </div>
+        <button type="button" onclick="closeCreateClassModal()" class="w-8 h-8 rounded-full bg-white/15 hover:bg-white/25 flex items-center justify-center text-white">
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.4" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" /></svg>
+        </button>
+      </div>
+      <form onsubmit="handleCreateNewClass(event)" class="p-6 space-y-4">
+        <div>
+          <label for="new-class-name" class="block text-xs font-bold text-slate-700 mb-1.5">Nama Kelas / Bab Pembelajaran</label>
+          <input type="text" id="new-class-name" required placeholder="Contoh: Matematika Fase E — Kelas X-3" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 text-sm focus:border-emerald-600 outline-none" />
+        </div>
+        <div>
+          <label for="new-class-code" class="block text-xs font-bold text-slate-700 mb-1.5">Kode Kelas (Huruf Kapital)</label>
+          <input type="text" id="new-class-code" required maxlength="18" oninput="this.value = this.value.toUpperCase().replace(/\s+/g, '')" class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 font-mono font-bold text-base uppercase tracking-wider focus:border-emerald-600 outline-none" />
+        </div>
+        <div class="flex items-center justify-end gap-2.5 pt-2">
+          <button type="button" onclick="closeCreateClassModal()" class="px-4 py-2.5 rounded-xl text-xs font-bold text-slate-600 hover:bg-slate-100">Batal</button>
+          <button type="submit" class="px-5 py-2.5 rounded-xl text-xs font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm">Simpan Kelas</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script>
+    // =====================================================================
+    // KONFIGURASI KELAS & MATERI LENGKAP DARI RANCANGAN KEGIATAN AMPLIFY
+    // =====================================================================
+    const GITHUB_INITIAL_DATA = {
+      classes: [
+        {
+          id: 'cls-bab4',
+          code: 'XIPA1-2026',
+          name: 'Matematika Fase E — Bab 4 (SPLTV & SPtLDV)',
+          teacher: 'Budi Santoso, S.Pd.',
+          materials: [
+            {
+              id: 'mat-bab4-01',
+              category: 'Materi',
+              title: 'Modul 1: SPLTV — Patungan Nota Kedai (Amplify Layar 1–19)',
+              summary: 'Mempelajari pemodelan SPLTV melalui konteks Patungan Nota Kedai dan analisis banyaknya solusi (tunggal, tak hingga, inkonsisten).',
+              content: `1. APERSEPSI & KILAS BALIK (LAYAR 1–5)\n• Uji pemahaman prasyarat persamaan linear dan SPLDV (Konteks Promo Paket Alat Tulis).\n\n2. KONTEKS MASALAH NYATA (LAYAR 6–7)\n• Kasus "Patungan Nota Kedai": 12 siswa mendapat 3 nota meja dengan total tertera, tetapi nota pesanan Raka hilang. Berapa harga satuan tiap menu?\n\n3. LATIHAN TERBIMBING SPLTV (LAYAR 8–15)\n• Tentukan variabel secara mandiri (misalnya m, d, e).\n• Model: 3m + 2d + 3e = 73; 2m + 3d + 2e = 67; m + d + 4e = 43 (dalam ribu rupiah).\n• Lakukan eliminasi variabel yang paling mudah (misal: d) untuk membentuk SPLDV, lalu temukan harga mie, dimsum, dan es teh.\n• Periksa solusi ke semua nota untuk memastikan keakuratannya.\n\n4. STUDI KASUS MISKONSEPSI TEMAN (LAYAR 16–19)\n• Kasus Bima: Mengapa menggunakan 2 nota saja tidak cukup (menghasilkan banyak solusi)?\n• Kasus Citra: Apa arti matematis dari hasil eliminasi 0 = 0? (Garis berimpit / banyak solusi).\n• Kasus Dani: Apa arti matematis dari hasil eliminasi 0 = -20? (Garis sejajar / inkonsisten / tidak ada solusi).`,
+              createdAt: '16 Nov 2026, 08.00',
+              questions: []
+            },
+            {
+              id: 'mat-bab4-02',
+              category: 'Materi',
+              title: 'Modul 2: SPtLDV — Market Day Kelas X-3 (Amplify Layar 20–27)',
+              summary: 'Mempelajari SPtLDV melalui konteks kewirausahaan Market Day Kelas X-3 dan penentuan Daerah Himpunan Penyelesaian (DHP).',
+              content: `1. KONTEKS MASALAH NYATA (LAYAR 20–22)\n• Kelas X-3 akan berjualan es kopi (x) dan roti bakar (y).\n• Identifikasi batasan: Modal kas paling banyak Rp300.000, kapasitas cooler paling banyak 55 produk, target untung wali kelas paling sedikit Rp150.000.\n• Model: 5x + 6y ≤ 300; x + y ≤ 55; 3x + 4y ≥ 150; x ≥ 0; y ≥ 0.\n\n2. EKSPLORASI GRAFIK & DHP (LAYAR 23–25)\n• Gunakan tabel tebak-periksa untuk menguji beberapa rencana jualan.\n• Lukis Daerah Himpunan Penyelesaian (DHP) dengan mencari irisan semua pertidaksamaan di atas. Temukan 5 titik pojoknya.\n\n3. STUDI KASUS MISKONSEPSI TEMAN (LAYAR 26)\n• Kasus Eko: Mengapa jawaban SPtLDV berupa daerah irisan, bukan sekadar satu titik potong?\n• Kasus Fajar: Tanda ≥ tidak selalu diarsir di atas garis (contoh saat koefisien y negatif). Gunakan uji titik (0,0).\n\n4. PENGAMBILAN KEPUTUSAN (LAYAR 27)\n• Tentukan rekomendasi rencana jualan terbaik untuk bendahara kelas berdasarkan titik pojok DHP.`,
+              createdAt: '17 Nov 2026, 08.00',
+              questions: []
+            },
+            {
+              id: 'mat-bab4-03',
+              category: 'Tugas',
+              title: 'Tugas Mandiri: Latihan SPLTV & SPtLDV (Amplify Layar 28–33)',
+              summary: 'Latihan soal pemodelan dan penyelesaian sistem persamaan dan pertidaksamaan linear.',
+              content: `Kerjakan latihan mandiri berikut secara runtut berdasarkan simulasi Amplify Layar 28–33:\n\n1. Soal 1 (Tiket Sirkus): Susun model SPLTV dari 3 struk keluarga (Andi, Butet, Danu) untuk mencari harga tiket anak, dewasa, dan lansia.\n2. Soal 2 (Tongkat Asep): Cari panjang 3 jenis tongkat (kasti, hoki, bisbol) menggunakan eliminasi-substitusi.\n3. Soal 3 (Beras Pak Musa): Tanpa menyelesaikan penuh, analisis banyaknya solusi dari sistem yang diberikan (apakah konsisten atau inkonsisten).\n4. Soal 4 (Kerja Paruh Waktu Bonar): Tulis model pertidaksamaan dari upah antar barang dan cuci piring. Gambar DHP dan analisis apakah 9 jam kerja sudah cukup memenuhi target.\n5. Soal 5 (Kebun Nova): Buat model SPtLDV dari modal pupuk dan bibit. Sebutkan semua pasangan bilangan cacah (p, t) yang mungkin!\n6. Soal 6 (Kebalikan Grafik): Buatlah sistem SPtLDV jika DHP-nya sudah diketahui berupa segi empat dengan titik pojok (0,0), (4,0), (3,3), dan (0,4).`,
+              createdAt: '18 Nov 2026, 10.00',
+              questions: [
+                {
+                  id: 'q-tugas-bab4-1',
+                  type: 'uraian',
+                  question: 'Tuliskan jawaban untuk Soal 1 (Tiket Sirkus). Sebutkan variabel, model SPLTV, dan harga masing-masing tiket.'
+                },
+                {
+                  id: 'q-tugas-bab4-2',
+                  type: 'uraian',
+                  question: 'Berdasarkan Soal 4 (Kerja Paruh Waktu Bonar), apakah 9 jam kerja cukup untuk memenuhi target? Jelaskan perhitunganmu.'
+                }
+              ]
+            },
+            {
+              id: 'mat-bab4-04',
+              category: 'Pengumuman',
+              title: 'Pengumuman: Refleksi & Penilaian Akhir Bab 4 (Amplify Layar 37–46)',
+              summary: 'Informasi mengenai asesmen sumatif bab Sistem Persamaan & Pertidaksamaan Linear.',
+              content: `1. REFLEKSI PEMBELAJARAN (LAYAR 37–39)\n• Pastikan kalian telah melengkapi susunan urutan langkah penyelesaian SPLTV dan SPtLDV di Amplify.\n• Isi asesmen diri (Bisa / Perlu Bantuan / Belum Bisa). Remedial singkat akan diberikan bagi yang membutuhkan.\n\n2. PENILAIAN AKHIR BAB 4 (LAYAR 40–46)\n• Asesmen sumatif berdurasi 45 menit dengan total skor 100.\n• Terdiri dari 2 soal otomatis (Pilihan Ganda & Benar/Salah) dan 3 soal uraian.\n• Kisi-kisi Uraian: Memodelkan & menyelesaikan SPLTV alat tulis (Koperasi), Menganalisis parameter banyaknya solusi sistem k, dan Melukis DHP Keputusan Sewa Bus Studi Lapangan (Layar 45).\n• Rubrik Penilaian Uraian: Skor diberikan berdasarkan kelengkapan Model Matematika, Prosedur Penyelesaian, Pemahaman Konsep, dan Interpretasi Keputusan.`,
+              createdAt: '19 Nov 2026, 09.00',
+              questions: []
+            }
+          ],
+        },
+        {
+          id: 'cls-bab5',
+          code: 'MIPA10-ABC',
+          name: 'Matematika Fase E — Bab 5 (Persamaan & Fungsi Kuadrat)',
+          teacher: 'Budi Santoso, S.Pd.',
+          materials: [
+            {
+              id: 'mat-bab5-01',
+              category: 'Materi',
+              title: 'Modul 1: Persamaan Kuadrat — Taman Literasi (Amplify Layar 1–19)',
+              summary: 'Mempelajari Persamaan Kuadrat melalui konteks Taman Literasi, analisis diskriminan, dan akar imajiner.',
+              content: `1. APERSEPSI & KILAS BALIK (LAYAR 1–5)\n• Kuis prasyarat: operasi penjabaran, pemfaktoran, sifat perkalian nol, dan perbedaan grafik linear vs kuadrat.\n\n2. KONTEKS MASALAH NYATA (LAYAR 6–7)\n• Kasus "Taman Literasi": OSIS memiliki lahan 8 m × 6 m. Bagian tengah seluas 24 m² ditanami rumput. Berapa lebar seragam jalan setapak paving (x) di sekelilingnya?\n\n3. LATIHAN TERBIMBING PERSAMAAN KUADRAT (LAYAR 8–16)\n• Tentukan variabel luas rumput.\n• Model: (8 - 2x)(6 - 2x) = 24  → x² - 7x + 6 = 0.\n• Cari penyelesaian melalui 3 cara: Pemfaktoran (dengan ubin aljabar), Melengkapkan Kuadrat Sempurna (saat luas diubah menjadi 20 m²), dan Rumus abc.\n• Lakukan analisis nilai diskriminan (D = b² - 4ac) menggunakan slider grafik untuk melihat jumlah akar real/imajiner.\n\n4. STUDI KASUS MISKONSEPSI TEMAN (LAYAR 17–19)\n• Kasus Ayu: Kesalahan menggunakan sifat perkalian nol pada ruas kanan yang tidak sama dengan 0.\n• Kasus Bagas: Bahaya membagi kedua ruas dengan variabel x (menghilangkan akar x = 0).\n• Kasus Cici: Kesalahan mengkuadratkan bilangan negatif saat menghitung diskriminan (-b)².`,
+              createdAt: '16 Nov 2026, 08.00',
+              questions: []
+            },
+            {
+              id: 'mat-bab5-02',
+              category: 'Materi',
+              title: 'Modul 2: Fungsi Kuadrat — Harga Es Kopi (Amplify Layar 20–28)',
+              summary: 'Mempelajari Fungsi Kuadrat melalui optimasi Harga Es Kopi Market Day, konstruksi tiga titik, dan titik puncak parabola.',
+              content: `1. KONTEKS MASALAH NYATA (LAYAR 20–22)\n• Lanjutan Market Day: Tiap kenaikan harga Rp1.000 (n), pembeli es kopi berkurang 5 cup dari basis terjual 60 cup.\n• Model Pendapatan: R(n) = (8 + n)(60 - 5n) = -5n² + 20n + 480.\n\n2. KARAKTERISTIK FUNGSI KUADRAT (LAYAR 24–25)\n• Eksplorasi Slider: Geser slider a, h, dan k pada fungsi y = a(x - h)² + k untuk melihat pengaruhnya terhadap bukaan grafik dan pergeseran titik puncak.\n• Titik Puncak: Puncak grafik R(n) berada di n = 2. Kenaikan Rp2.000 (harga Rp10.000) memberi pendapatan maksimal Rp500.000.\n\n3. KONSTRUKSI FUNGSI KUADRAT (LAYAR 26)\n• Latihan mengonstruksi fungsi kuadrat hanya dari 3 titik data dengan memanfaatkan eliminasi SPLTV.\n\n4. STUDI KASUS & PENGAMBILAN KEPUTUSAN (LAYAR 27–28)\n• Kasus Dodi & Eka: Meluruskan asumsi keliru mengenai sumbu simetri negatif dan korelasi harga-kuantitas.\n• Pendapatan vs Keuntungan: Masukkan faktor modal Rp5.000/cup. Apakah harga optimal untuk pendapatan (Rp10.000) sama dengan harga optimal untuk keuntungan bersih (Rp12.500)?`,
+              createdAt: '17 Nov 2026, 08.00',
+              questions: []
+            },
+            {
+              id: 'mat-bab5-03',
+              category: 'Tugas',
+              title: 'Tugas Mandiri: Latihan Persamaan & Fungsi Kuadrat (Amplify Layar 29–35)',
+              summary: 'Latihan soal mandiri menentukan penyelesaian persamaan kuadrat dan menganalisis karakteristik fungsi kuadrat.',
+              content: `Kerjakan latihan mandiri berikut secara sistematis:\n\n1. Soal 1 (Pemfaktoran): Tentukan akar dari 2x² - 5x - 18 = 0.\n2. Soal 2 (Melengkapkan Kuadrat Sempurna): Selesaikan x² - 12x - 15 = 0.\n3. Soal 3 (Diskriminan): Tentukan jenis akar pada 3 persamaan kuadrat tanpa mencari akarnya.\n4. Soal 4 (Soal Babilonia): Luas sebuah persegi dikurangi panjang sisinya adalah 600. Tentukan panjang sisinya.\n5. Soal 5 (Karakteristik Fungsi): Tentukan arah bukaan, titik potong sumbu, sumbu simetri, dan titik puncak minimum dari f(x) = x² - 4x - 5.\n6. Soal 6 (Konstruksi Fungsi): Susun fungsi kuadrat yang berpuncak di (2, 6) dan melalui titik (1, 7).\n7. Soal 7 (Lintasan Bola): Bola dilempar setinggi 4m dan mencapai maksimum 8m setelah 2 detik. Kapan bola tersebut menyentuh tanah?`,
+              createdAt: '18 Nov 2026, 10.00',
+              questions: [
+                {
+                  id: 'q-tugas-bab5-1',
+                  type: 'pg',
+                  question: 'Tentukan akar-akar dari persamaan 2x² - 5x - 18 = 0.',
+                  options: {
+                    A: 'x = 4.5 atau x = -2',
+                    B: 'x = -4.5 atau x = 2',
+                    C: 'x = 9 atau x = -2',
+                    D: 'x = -9 atau x = 2'
+                  },
+                  correctAnswer: 'A'
+                },
+                {
+                  id: 'q-tugas-bab5-2',
+                  type: 'uraian',
+                  question: 'Bola dilempar dari ketinggian 4 m dan mencapai tinggi maksimum 8 m setelah 2 detik. Jelaskan model matematikanya dan kapan bola menyentuh tanah.'
+                }
+              ]
+            },
+            {
+              id: 'mat-bab5-04',
+              category: 'Pengumuman',
+              title: 'Pengumuman: Refleksi & Penilaian Akhir Bab 5 (Amplify Layar 39–48)',
+              summary: 'Informasi mengenai asesmen sumatif bab Persamaan dan Fungsi Kuadrat.',
+              content: `1. REFLEKSI & PENGAYAAN (LAYAR 36–41)\n• Tantangan Pengayaan (Layar 37): Menyelesaikan persamaan kuadrat berpangkat dengan fungsi basis.\n• Peta Keputusan: Pasangkan karakteristik soal dengan metode penyelesaian paling efisien (Pemfaktoran vs Kuadrat Sempurna vs Rumus abc).\n\n2. PENILAIAN AKHIR BAB 5 (LAYAR 42–48)\n• Asesmen sumatif berdurasi 45 menit (Skor 100).\n• Soal 1-2 (Otomatis): Mengenali persamaan kuadrat & analisis grafik fungsi kuadrat.\n• Soal 3-5 (Uraian Kontekstual): Model jalan setapak lahan 10m x 7m, analisis jenis akar menggunakan parameter k, dan analisis grafik lintasan parabola bola basket Nadia (Layar 47).\n• Keputusan Uraian: Pastikan akar persamaan selalu ditafsirkan ulang sesuai konteks dunia nyatanya (tolak akar imajiner/negatif jika tidak rasional secara fisik).`,
+              createdAt: '19 Nov 2026, 09.00',
+              questions: []
+            }
+          ],
+        },
+      ],
+    };
+
+    const DB_STORAGE_KEY = 'linquad_levelup_github_ready_v1';
+    const SESSION_STORAGE_KEY = 'linquad_levelup_active_session_v1';
+    
+    let db = { classes: [], students: [] };
+    let session = { role: null, studentId: null, classId: null };
+    let uiState = {
+      studentFilter: 'Semua',
+      activeStudentMaterialId: null,
+      isAnonymousMode: false,
+      activeGradeStudentId: null,
+      pendingDeleteMaterialKey: null,
+    };
+
+    function loadDatabase() {
+      let stored = null;
+      try {
+        const raw = localStorage.getItem(DB_STORAGE_KEY);
+        if (raw) stored = JSON.parse(raw);
+      } catch (err) {
+        console.warn('Gagal membaca localStorage:', err);
+      }
+      if (!stored || !Array.isArray(stored.classes)) {
+        db = {
+          classes: JSON.parse(JSON.stringify(GITHUB_INITIAL_DATA.classes)),
+          students: [],
+        };
+        saveDatabase();
+        return;
+      }
+      db.classes = stored.classes;
+      db.students = Array.isArray(stored.students) ? stored.students : [];
+      let hasGitHubAddition = false;
+      GITHUB_INITIAL_DATA.classes.forEach((ghClass) => {
+        let existingClass = db.classes.find((c) => c.id === ghClass.id);
+        if (!existingClass) {
+          db.classes.push(JSON.parse(JSON.stringify(ghClass)));
+          hasGitHubAddition = true;
+        } else if (Array.isArray(ghClass.materials)) {
+          ghClass.materials.forEach((ghMat) => {
+            if (!existingClass.materials.some((m) => m.id === ghMat.id)) {
+              existingClass.materials.push(JSON.parse(JSON.stringify(ghMat)));
+              hasGitHubAddition = true;
+            }
+          });
+        }
+      });
+      if (hasGitHubAddition) saveDatabase();
+    }
+    
+    function saveDatabase() {
+      try {
+        localStorage.setItem(DB_STORAGE_KEY, JSON.stringify(db));
+      } catch (err) {
+        console.warn('Gagal menyimpan:', err);
+      }
+    }
+    
+    function saveSession() {
+      try {
+        sessionStorage.setItem(SESSION_STORAGE_KEY, JSON.stringify(session));
+      } catch (err) {
+        console.warn('Gagal sesi:', err);
+      }
+    }
+    
+    function loadSession() {
+      try {
+        const raw = sessionStorage.getItem(SESSION_STORAGE_KEY);
+        if (raw) {
+          const parsed = JSON.parse(raw);
+          if (parsed && parsed.role) session = parsed;
+        }
+      } catch (err) {
+        console.warn('Gagal muat sesi:', err);
+      }
+    }
+
+    window.addEventListener('storage', (event) => {
+      if (event.key === DB_STORAGE_KEY) {
+        loadDatabase();
+        if (session.role === 'guru') {
+          renderTeacherDashboard();
+          if (uiState.activeGradeStudentId) renderTeacherGradeModalBody(uiState.activeGradeStudentId);
+        } else if (session.role === 'murid') {
+          renderStudentClassroom();
+          if (uiState.activeStudentMaterialId) openStudentMaterialModal(uiState.activeStudentMaterialId, true);
+        }
+      }
+    });
+
+    function showView(viewId) {
+      const views = ['view-landing', 'view-teacher-login', 'view-student-login', 'view-student-classroom', 'view-teacher-dashboard'];
+      views.forEach((id) => {
+        const el = document.getElementById(id);
+        if (el) el.classList.toggle('hidden', id !== viewId);
+      });
+      updateNavbarActions();
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+    
+    function goHome() {
+      session = { role: null, studentId: null, classId: null };
+      saveSession();
+      showView('view-landing');
+    }
+    
+    function updateNavbarActions() {
+      const container = document.getElementById('navbar-actions');
+      if (session.role === 'guru') {
+        container.innerHTML = `
+          <span class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Peran Aktif: Guru
+          </span>
+          <button type="button" onclick="logoutCurrentUser()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 transition-colors">
+            Keluar
+          </button>
+        `;
+      } else if (session.role === 'murid') {
+        const student = db.students.find((s) => s.id === session.studentId);
+        const sName = student ? escapeHtml(student.name) : 'Murid';
+        container.innerHTML = `
+          <span class="hidden sm:inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-bold bg-indigo-50 text-indigo-700 border border-indigo-200">
+            <span class="w-2 h-2 rounded-full bg-indigo-600"></span> Murid: ${sName}
+          </span>
+          <button type="button" onclick="logoutCurrentUser()" class="inline-flex items-center gap-1.5 px-3.5 py-2 rounded-xl text-xs sm:text-sm font-bold text-rose-600 bg-rose-50 hover:bg-rose-100 border border-rose-200/80 transition-colors">
+            Keluar
+          </button>
+        `;
+      } else {
+        container.innerHTML = `
+          <span class="inline-flex items-center gap-2 px-3 py-1.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-700 border border-slate-200/80">
+            <span class="w-2 h-2 rounded-full bg-emerald-500"></span> Tahun Ajaran 2026/2027
+          </span>
+        `;
+      }
+    }
+    
+    function logoutCurrentUser() {
+      const prevRole = session.role === 'guru' ? 'Dashboard Guru' : 'Ruang Kelas Murid';
+      goHome();
+      showToast(`Berhasil keluar dari ${prevRole}.`, 'info');
+    }
+
+    function fillTeacherAccount() {
+      document.getElementById('teacher-login-id').value = 'budi.santoso@sman1.sch.id';
+      document.getElementById('teacher-login-pass').value = 'guru123';
+      hideTeacherLoginError();
+      showToast('Akun Guru berhasil diisi.', 'info');
+    }
+    
+    function toggleTeacherPassword() {
+      const input = document.getElementById('teacher-login-pass');
+      input.type = input.type === 'password' ? 'text' : 'password';
+    }
+    
+    function showTeacherLoginError(msg) {
+      document.getElementById('teacher-login-error-text').textContent = msg;
+      document.getElementById('teacher-login-error').classList.remove('hidden');
+    }
+    
+    function hideTeacherLoginError() {
+      document.getElementById('teacher-login-error').classList.add('hidden');
+    }
+    
+    function handleTeacherLogin(event) {
+      event.preventDefault();
+      const idVal = document.getElementById('teacher-login-id').value.trim();
+      const passVal = document.getElementById('teacher-login-pass').value.trim();
+      if (!idVal || !passVal) return showTeacherLoginError('Email/NIP dan kata sandi wajib diisi.');
+      if (passVal.length < 4) return showTeacherLoginError('Kata sandi minimal 4 karakter.');
+      
+      loadDatabase();
+      session = { role: 'guru', studentId: null, classId: null };
+      saveSession();
+      initQuizBuilderDefault();
+      renderTeacherDashboard();
+      showView('view-teacher-dashboard');
+      showToast('Selamat datang di Dashboard Guru, Budi Santoso, S.Pd.!', 'success');
+    }
+
+    function showStudentLoginError(msg) {
+      const box = document.getElementById('student-login-error');
+      const codeInput = document.getElementById('student-login-code');
+      document.getElementById('student-login-error-text').textContent = msg;
+      box.classList.remove('hidden', 'animate-shake');
+      void box.offsetWidth;
+      box.classList.add('animate-shake');
+      codeInput.classList.add('border-rose-400', 'bg-rose-50/30');
+    }
+    
+    function hideStudentLoginError() {
+      document.getElementById('student-login-error').classList.add('hidden');
+      document.getElementById('student-login-code').classList.remove('border-rose-400', 'bg-rose-50/30');
+    }
+    
+    function handleStudentLogin(event) {
+      event.preventDefault();
+      loadDatabase();
+      const rawName = document.getElementById('student-login-name').value.trim().replace(/\s+/g, ' ');
+      const rawCode = document.getElementById('student-login-code').value.trim().toUpperCase();
+      
+      if (!rawName) return showStudentLoginError('Nama lengkap murid wajib diisi.');
+      if (!rawCode) return showStudentLoginError('Kode kelas wajib diisi.');
+      
+      const matchedClass = db.classes.find((c) => c.code.toUpperCase() === rawCode);
+      if (!matchedClass) return showStudentLoginError('Kode kelas tidak valid atau belum terdaftar.');
+      
+      const nowStr = formatCurrentTime();
+      let studentRecord = db.students.find((s) => s.classId === matchedClass.id && s.name.toLowerCase() === rawName.toLowerCase());
+      
+      if (studentRecord) {
+        studentRecord.name = rawName;
+        studentRecord.loginTime = nowStr;
+      } else {
+        studentRecord = {
+          id: 'std-' + Date.now() + '-' + Math.random().toString(36).slice(2, 6),
+          name: rawName,
+          classId: matchedClass.id,
+          loginTime: nowStr,
+          completedMaterialIds: [],
+          submissions: {},
+        };
+        db.students.push(studentRecord);
+      }
+      
+      saveDatabase();
+      session = { role: 'murid', studentId: studentRecord.id, classId: matchedClass.id };
+      saveSession();
+      
+      document.getElementById('student-login-name').value = '';
+      document.getElementById('student-login-code').value = '';
+      hideStudentLoginError();
+      uiState.studentFilter = 'Semua';
+      
+      renderStudentClassroom();
+      showView('view-student-classroom');
+      showToast(`Selamat datang, ${rawName}! Berhasil bergabung ke kelas.`, 'success');
+    }
+    
+    function leaveStudentClass() {
+      goHome();
+      showToast('Kamu telah keluar dari ruang kelas.', 'info');
+    }
+
+    function renderStudentClassroom() {
+      const cls = db.classes.find((c) => c.id === session.classId);
+      const student = db.students.find((s) => s.id === session.studentId);
+      if (!cls || !student) return goHome();
+      
+      document.getElementById('student-class-code').textContent = cls.code;
+      document.getElementById('student-banner-name').textContent = student.name;
+      document.getElementById('student-class-name').textContent = cls.name;
+      document.getElementById('student-class-teacher').textContent = cls.teacher;
+      
+      const materials = Array.isArray(cls.materials) ? cls.materials : [];
+      const completedIds = Array.isArray(student.completedMaterialIds) ? student.completedMaterialIds : [];
+      const countAll = materials.length;
+      const doneCount = materials.filter((m) => completedIds.includes(m.id)).length;
+      const pct = countAll > 0 ? Math.round((doneCount / countAll) * 100) : 0;
+      
+      document.getElementById('st-count-all').textContent = countAll;
+      document.getElementById('st-count-materi').textContent = materials.filter((m) => m.category === 'Materi').length;
+      document.getElementById('st-count-tugas').textContent = materials.filter((m) => m.category === 'Tugas').length;
+      document.getElementById('st-count-pengumuman').textContent = materials.filter((m) => m.category === 'Pengumuman').length;
+      
+      // FIXED TEMPLATE BUG HERE
+      document.getElementById('student-progress-text').textContent = `${doneCount}/${countAll} Selesai (${pct}%)`;
+      document.getElementById('student-progress-bar').style.width = `${pct}%`;
+      
+      document.querySelectorAll('.student-filter-btn').forEach((btn) => {
+        const active = btn.dataset.filter === uiState.studentFilter;
+        btn.className = active
+          ? 'student-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-bold bg-indigo-600 text-white shadow-xs transition-all whitespace-nowrap'
+          : 'student-filter-btn px-4 py-2 rounded-xl text-xs sm:text-sm font-semibold bg-white text-slate-600 hover:bg-slate-100 border border-slate-200 transition-all whitespace-nowrap';
+      });
+      
+      const filtered = uiState.studentFilter === 'Semua' ? materials : materials.filter((m) => m.category === uiState.studentFilter);
+      const container = document.getElementById('student-materials-container');
+      
+      if (materials.length === 0) {
+        container.innerHTML = `<div class="bg-white rounded-3xl p-10 text-center border border-slate-200/90 shadow-xs">Belum Ada Materi dari Guru</div>`;
+        return;
+      }
+      
+      if (filtered.length === 0) {
+        container.innerHTML = `<div class="bg-white rounded-3xl p-10 text-center border border-slate-200/90"><p class="text-sm font-bold text-slate-800">Belum ada konten untuk kategori "${escapeHtml(uiState.studentFilter)}"</p></div>`;
+        return;
+      }
+      
+      container.innerHTML = filtered.map((mat) => {
+        const isDone = completedIds.includes(mat.id);
+        const badge = getCategoryBadgeStyle(mat.category);
+        const hasQuiz = Array.isArray(mat.questions) && mat.questions.length > 0;
+        const submission = student.submissions ? student.submissions[mat.id] : null;
+        const effectiveScore = getEffectiveSubmissionScore(submission);
+        
+        return `
+          <article class="bg-white rounded-2xl p-5 sm:p-6 border ${isDone ? 'border-emerald-200' : 'border-slate-200/90'} shadow-xs hover:shadow-md transition-all">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+              <div class="space-y-1.5 min-w-0 flex-1">
+                <div class="flex flex-wrap items-center gap-2">
+                  <span class="px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.bg} ${badge.text}">${escapeHtml(mat.category)}</span>
+                  <span class="text-xs text-slate-400">${escapeHtml(mat.createdAt)}</span>
+                  ${hasQuiz ? `<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-purple-50 text-purple-700 border border-purple-200">Latihan (${mat.questions.length} Soal)</span>` : ''}
+                  ${isDone ? `<span class="px-2.5 py-0.5 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">Selesai Dipelajari</span>` : ''}
+                  ${effectiveScore !== null ? `<span class="px-2.5 py-0.5 rounded-full text-xs font-extrabold bg-amber-50 text-amber-800 border border-amber-200">Nilai: ${effectiveScore}</span>` : submission ? `<span class="px-2.5 py-0.5 rounded-full text-xs font-semibold bg-slate-100 text-slate-600">Jawaban Terkirim</span>` : ''}
+                </div>
+                <h3 class="text-base sm:text-lg font-extrabold text-slate-900 leading-snug">${escapeHtml(mat.title)}</h3>
+                <p class="text-xs sm:text-sm text-slate-600 leading-relaxed">${escapeHtml(mat.summary)}</p>
+              </div>
+              <div class="shrink-0 flex items-center justify-end">
+                <button type="button" onclick="openStudentMaterialModal('${mat.id}')" class="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-4 py-2.5 rounded-xl bg-indigo-600 hover:bg-indigo-700 text-white text-xs sm:text-sm font-bold shadow-xs transition-colors">
+                  <span>Buka &amp; Pelajari</span>
+                </button>
+              </div>
+            </div>
+          </article>
+        `;
+      }).join('');
+    }
+    
+    function setStudentFilter(filter) {
+      uiState.studentFilter = filter;
+      renderStudentClassroom();
+    }
+    
+    function openStudentMaterialModal(materialId, preserveInputs = false) {
+      const cls = db.classes.find((c) => c.id === session.classId);
+      const student = db.students.find((s) => s.id === session.studentId);
+      if (!cls || !student) return;
+      
+      const mat = cls.materials.find((m) => m.id === materialId);
+      if (!mat) return;
+      
+      uiState.activeStudentMaterialId = materialId;
+      const badge = getCategoryBadgeStyle(mat.category);
+      
+      const badgeEl = document.getElementById('st-modal-badge');
+      badgeEl.className = `px-2.5 py-0.5 rounded-full text-xs font-bold ${badge.bg} ${badge.text}`;
+      badgeEl.textContent = mat.category;
+      
+      document.getElementById('st-modal-date').textContent = mat.createdAt;
+      document.getElementById('st-modal-title').textContent = mat.title;
+      document.getElementById('st-modal-summary').textContent = mat.summary;
+      document.getElementById('st-modal-content').textContent = mat.content;
+      
+      const isDone = student.completedMaterialIds.includes(mat.id);
+      const doneBtn = document.getElementById('btn-mark-material-done');
+      doneBtn.textContent = isDone ? 'Selesai Dipelajari ✓' : 'Tandai Selesai Dipelajari';
+      doneBtn.className = isDone
+        ? 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-100 text-emerald-800 border border-emerald-300 transition-all'
+        : 'px-5 py-2.5 rounded-xl text-xs sm:text-sm font-bold bg-emerald-600 hover:bg-emerald-700 text-white shadow-sm transition-all';
+        
+      const quizSection = document.getElementById('st-modal-quiz-section');
+      const questionsWrapper = document.getElementById('st-modal-questions-wrapper');
+      
+      if (Array.isArray(mat.questions) && mat.questions.length > 0) {
+        quizSection.classList.remove('hidden');
+        const existingSub = student.submissions ? student.submissions[mat.id] : null;
+        
+        if (!preserveInputs) {
+          questionsWrapper.innerHTML = mat.questions.map((q, idx) => {
+            const savedAns = existingSub && existingSub.answers ? existingSub.answers[q.id] || '' : '';
+            if (q.type === 'pg') {
+              return `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5">
+                  <p class="text-sm font-bold text-slate-900">${idx + 1}. ${escapeHtml(q.question)}</p>
+                  <div class="space-y-2">
+                    ${['A', 'B', 'C', 'D'].map((optKey) => {
+                      const checked = savedAns === optKey ? 'checked' : '';
+                      return `
+                        <label class="flex items-start gap-2.5 p-2.5 rounded-xl bg-white border border-slate-200 hover:border-indigo-400 cursor-pointer text-xs sm:text-sm">
+                          <input type="radio" name="st-quiz-${q.id}" value="${optKey}" ${checked} class="mt-0.5 text-indigo-600 focus:ring-indigo-500" />
+                          <span><strong class="font-mono">${optKey}.</strong> ${escapeHtml(q.options[optKey])}</span>
+                        </label>
+                      `;
+                    }).join('')}
+                  </div>
+                </div>
+              `;
+            } else {
+              return `
+                <div class="p-4 rounded-2xl bg-slate-50 border border-slate-200/90 space-y-2.5">
+                  <p class="text-sm font-bold text-slate-900">${idx + 1}. ${escapeHtml(q.question)}</p>
+                  <textarea id="st-essay-${q.id}" rows="3" placeholder="Tuliskan jawabanmu..." class="w-full px-3.5 py-2.5 rounded-xl border border-slate-300 bg-white text-sm focus:border-indigo-600 outline-none">${escapeHtml(savedAns)}</textarea>
+                </div>
+              `;
+            }
+          }).join('');
+        }
+      } else {
+        quizSection.classList.add('hidden');
+      }
+      
+      document.getElementById('modal-student-material').classList.remove('hidden');
+    }
+    
+    function closeStudentMaterialModal() {
+      document.getElementById('modal-student-material').classList.add('hidden');
+      uiState.activeStudentMaterialId = null;
+    }
+    
+    function toggleMaterialCompletionFromModal() {
+      const cls = db.classes.find((c) => c.id === session.classId);
+      const student = db.students.find((s) => s.id === session.studentId);
+      if (!cls || !student || !uiState.activeStudentMaterialId) return;
+      
+      const matId = uiState.activeStudentMaterialId;
+      const idx = student.completedMaterialIds.indexOf(matId);
+      
+      if (idx === -1) {
+        student.completedMaterialIds.push(matId);
+        showToast('Materi ditandai selesai dipelajari!', 'success');
+      } else {
+        student.completedMaterialIds.splice(idx, 1);
+        showToast('Status selesai dibatalkan.', 'info');
+      }
+      
+      saveDatabase();
+      renderStudentClassroom();
+      openStudentMaterialModal(matId, true);
+    }
+    
+    function submitStudentQuizAnswers() {
+      const cls = db.classes.find((c) => c.id === session.classId);
+      const student = db.students.find((s) => s.id === session.studentId);
+      if (!cls || !student || !uiState.activeStudentMaterialId) return;
+      
+      const mat = cls.materials.find((m) => m.id === uiState.activeStudentMaterialId);
+      if (!mat || !Array.isArray(mat.questions)) return;
+      
+      const answers = {};
+      let pgCount = 0, pgCorrect = 0, hasEmpty = false;
+      
+      mat.questions.forEach((q) => {
+        if (q.type === 'pg') {
+          pgCount++;
+          const selected = document.querySelector(`input[name="st-quiz-${q.id}"]:checked`);
+          if (!selected) hasEmpty = true;
+          else {
+            answers[q.id] = selected.value;
+            if (selected.value === q.correctAnswer) pgCorrect++;
+          }
+        } else {
+          const essayEl = document.getElementById(`st-essay-${q.id}`);
+          const val = essayEl ? essayEl.value.trim() : '';
+          if (!val) hasEmpty = true;
+          answers[q.id] = val;
+        }
+      });
+      
+      if (hasEmpty) return showToast('Mohon lengkapi semua jawaban.', 'error');
+      
+      const autoScore = pgCount > 0 ? Math.round((pgCorrect / pgCount) * 100) : null;
+      if (!student.submissions) student.submissions = {};
+      student.submissions[mat.id] = { submittedAt: formatCurrentTime(), answers, autoScore, teacherScore: null, teacherFeedback: '' };
+      
+      if (!student.completedMaterialIds.includes(mat.id)) student.completedMaterialIds.push(mat.id);
+      
+      saveDatabase();
+      renderStudentClassroom();
+      openStudentMaterialModal(mat.id, true);
+      showToast('Jawaban berhasil terkirim ke Guru!', 'success');
+    }
+
+    function renderTeacherDashboard() {
+      loadDatabase();
+      const totalClasses = db.classes.length;
+      const totalStudents = db.students.length;
+      const totalMaterials = db.classes.reduce((sum, c) => sum + (Array.isArray(c.materials) ? c.materials.length : 0), 0);
+      
+      let allScores = [];
+      db.students.forEach((st) => {
+        const avg = getStudentAverageScore(st);
+        if (avg !== null) allScores.push(avg);
+      });
+      
+      const overallAvg = allScores.length > 0 ? Math.round(allScores.reduce((a, b) => a + b, 0) / allScores.length) : null;
+      
+      document.getElementById('stat-classes').textContent = `${totalClasses} Kelas`;
+      document.getElementById('stat-students').textContent = `${totalStudents} Murid`;
+      document.getElementById('stat-materials').textContent = `${totalMaterials} Konten`;
+      document.getElementById('stat-avg-score').textContent = overallAvg !== null ? overallAvg : '-';
+      
+      renderTeacherClassesGrid();
+      syncTeacherClassSelects();
+      renderTeacherPublishedMaterials();
+      renderTeacherStudentsPanel();
+    }
+    
+    function renderTeacherClassesGrid() {
+      const grid = document.getElementById('teacher-classes-grid');
+      grid.innerHTML = db.classes.map((cls) => {
+        const matCount = Array.isArray(cls.materials) ? cls.materials.length : 0;
+        const stdCount = db.students.filter((s) => s.classId === cls.id).length;
+        return `
+          <div class="bg-white rounded-3xl p-6 border border-slate-200/90 shadow-xs flex flex-col justify-between gap-4">
+            <div>
+              <div class="flex flex-wrap items-center justify-between gap-2 mb-2.5">
+                <span class="px-3 py-1 rounded-full text-xs font-bold bg-emerald-50 text-emerald-700 border border-emerald-200">${stdCount} Murid Login</span>
+                <span class="text-xs font-semibold text-slate-500">${matCount} Materi/Tugas</span>
+              </div>
+              <h3 class="text-base sm:text-lg font-extrabold text-slate-900 mb-1 leading-snug">${escapeHtml(cls.name)}</h3>
+              <div class="bg-slate-50 border-2 border-dashed border-slate-300 rounded-2xl p-4 flex items-center justify-between gap-3 mt-4">
+                <div>
+                  <span class="block text-[10px] font-bold uppercase tracking-wider text-slate-400">Kode Kelas</span>
+                  <span class="font-mono font-extrabold text-xl tracking-widest text-slate-900">${escapeHtml(cls.code)}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+    }
+    
+    function openCreateClassModal() {
+      document.getElementById('new-class-name').value = '';
+      document.getElementById('new-class-code').value = `KLS10-${Math.floor(100 + Math.random() * 900)}`;
+      document.getElementById('modal-create-class').classList.remove('hidden');
+    }
+    
+    function closeCreateClassModal() { document.getElementById('modal-create-class').classList.add('hidden'); }
+    
+    function handleCreateNewClass(event) {
+      event.preventDefault();
+      const name = document.getElementById('new-class-name').value.trim();
+      const code = document.getElementById('new-class-code').value.trim().toUpperCase();
+      if (!name || !code) return showToast('Semua wajib diisi.', 'error');
+      
+      db.classes.push({ id: 'cls-' + Date.now(), code, name, teacher: 'Budi Santoso, S.Pd.', materials: [] });
+      saveDatabase();
+      closeCreateClassModal();
+      renderTeacherDashboard();
+      showToast(`Kelas baru "${name}" berhasil dibuat!`, 'success');
+    }
+    
+    function syncTeacherClassSelects() {
+      const matSelect = document.getElementById('mat-class-select');
+      const filterSelect = document.getElementById('teacher-mat-filter');
+      
+      // FIXED TEMPLATE BUG HERE
+      matSelect.innerHTML = db.classes.map((c) => `<option value="${c.id}">${escapeHtml(c.name)} (${escapeHtml(c.code)})</option>`).join('');
+      filterSelect.innerHTML = `<option value="ALL">Semua Kelas</option>` + db.classes.map((c) => `<option value="${c.id}">${escapeHtml(c.code)} — ${escapeHtml(c.name)}</option>`).join('');
+    }
+    
+    function toggleQuizBuilder() {
+      const checked = document.getElementById('mat-has-quiz-checkbox').checked;
+      document.getElementById('quiz-builder-container').classList.toggle('hidden', !checked);
+      if (checked && document.getElementById('quiz-questions-list').children.length === 0) addQuizQuestionBlock();
+    }
+    
+    function initQuizBuilderDefault() {
+      document.getElementById('mat-has-quiz-checkbox').checked = false;
+      document.getElementById('quiz-builder-container').classList.add('hidden');
+      document.getElementById('quiz-questions-list').innerHTML = '';
+    }
+    
+    function addQuizQuestionBlock() {
+      const list = document.getElementById('quiz-questions-list');
+      const blockId = 'qb-' + Date.now();
+      const div = document.createElement('div');
+      div.className = 'quiz-question-item p-3.5 rounded-xl bg-white border border-slate-200 space-y-2.5';
+      div.dataset.blockId = blockId;
+      div.innerHTML = `
+        <div class="flex items-center gap-2">
+          <select class="qb-type px-2.5 py-1 rounded-lg border border-slate-300 text-xs font-bold text-slate-700"><option value="uraian">Soal Uraian</option></select>
+          <button type="button" onclick="this.closest('.quiz-question-item').remove()" class="text-xs text-rose-600">Hapus</button>
+        </div>
+        <input type="text" placeholder="Pertanyaan..." class="qb-question w-full px-3 py-2 border rounded-lg text-sm" />
+      `;
+      list.appendChild(div);
+    }
+    
+    function handlePublishMaterial(event) {
+      event.preventDefault();
+      const classId = document.getElementById('mat-class-select').value;
+      const title = document.getElementById('mat-title-input').value.trim();
+      const summary = document.getElementById('mat-summary-input').value.trim();
+      const content = document.getElementById('mat-content-input').value.trim();
+      
+      const targetClass = db.classes.find((c) => c.id === classId);
+      if (!targetClass || !title) return;
+      
+      const questions = [];
+      if (document.getElementById('mat-has-quiz-checkbox').checked) {
+        document.querySelectorAll('.quiz-question-item').forEach((b, i) => {
+          questions.push({ id: 'q-' + Date.now() + i, type: 'uraian', question: b.querySelector('.qb-question').value });
+        });
+      }
+      
+      targetClass.materials.unshift({
+        id: 'mat-' + Date.now(),
+        category: document.getElementById('mat-category-select').value,
+        title, summary, content, createdAt: formatCurrentTime(), questions
+      });
+      
+      saveDatabase();
+      event.target.reset();
+      initQuizBuilderDefault();
+      renderTeacherDashboard();
+      
+      // FIXED TEMPLATE BUG HERE
+      showToast(`[${document.getElementById('mat-category-select').value}] "${title}" berhasil dipublikasikan ke ${targetClass.code}!`, 'success');
+    }
+    
+    function renderTeacherPublishedMaterials() {
+      const container = document.getElementById('teacher-published-list');
+      const filterClassId = document.getElementById('teacher-mat-filter').value;
+      let items = [];
+      db.classes.forEach((cls) => {
+        if (filterClassId === 'ALL' || filterClassId === cls.id) {
+          (cls.materials || []).forEach((mat) => items.push({ cls, mat }));
+        }
+      });
+      
+      if (items.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-sm text-slate-500">Belum ada materi terpublikasi</div>`;
+        return;
+      }
+      
+      container.innerHTML = items.map(({ cls, mat }) => {
+        const badge = getCategoryBadgeStyle(mat.category);
+        
+        // FIXED TEMPLATE BUG HERE
+        const delKey = `${cls.id}::${mat.id}`;
+        
+        const isConfirm = uiState.pendingDeleteMaterialKey === delKey;
+        return `
+          <div class="p-4 rounded-2xl border bg-slate-50 flex items-start justify-between gap-3">
+            <div class="space-y-1">
+              <span class="px-2 py-0.5 rounded text-[11px] font-bold ${badge.bg} ${badge.text}">${mat.category} - ${cls.code}</span>
+              <h4 class="font-bold text-sm">${escapeHtml(mat.title)}</h4>
+            </div>
+            ${isConfirm 
+              // FIXED TEMPLATE BUG HERE
+              ? `<button onclick="confirmDeletePublishedMaterial('${cls.id}','${mat.id}')" class="px-3 py-1 text-xs text-white bg-rose-600 rounded">Yakin?</button>` 
+              : `<button onclick="uiState.pendingDeleteMaterialKey='${delKey}'; renderTeacherPublishedMaterials()" class="px-3 py-1 text-xs text-rose-600 border border-rose-200 rounded">Hapus</button>`
+            }
+          </div>
+        `;
+      }).join('');
+    }
+    
+    function confirmDeletePublishedMaterial(classId, materialId) {
+      const cls = db.classes.find((c) => c.id === classId);
+      if (cls) cls.materials = cls.materials.filter((m) => m.id !== materialId);
+      uiState.pendingDeleteMaterialKey = null;
+      saveDatabase();
+      renderTeacherDashboard();
+      showToast('Konten dihapus.', 'info');
+    }
+
+    function toggleAnonymousMode() {
+      uiState.isAnonymousMode = !uiState.isAnonymousMode;
+      renderTeacherStudentsPanel();
+    }
+
+    function getStudentDisplayName(student, index) { return uiState.isAnonymousMode ? `Murid Anonim #${index + 1}` : student.name; }
+
+    function renderTeacherStudentsPanel() {
+      const container = document.getElementById('teacher-students-container');
+      if (db.students.length === 0) {
+        container.innerHTML = `<div class="p-8 text-center text-slate-500 text-sm">Belum Ada Murid Login</div>`;
+        return;
+      }
+      container.innerHTML = `
+        <table class="w-full text-left text-sm border-collapse">
+          <thead><tr class="border-b text-xs text-slate-500"><th class="p-2">Nama</th><th class="p-2">Kelas</th><th class="p-2">Progres</th><th class="p-2 text-right">Aksi</th></tr></thead>
+          <tbody>
+            ${db.students.map((st, idx) => {
+              const cls = db.classes.find(c => c.id === st.classId);
+              const totalMats = cls ? cls.materials.length : 0;
+              const doneMats = cls ? cls.materials.filter(m => st.completedMaterialIds.includes(m.id)).length : 0;
+              
+              return `
+              <tr class="border-b">
+                <td class="p-2 font-bold">${escapeHtml(getStudentDisplayName(st, idx))}</td>
+                <td class="p-2 font-mono text-xs">${cls ? escapeHtml(cls.code) : '-'}</td>
+                
+                <!-- FIXED TEMPLATE BUG HERE -->
+                <td class="p-2 text-xs">${doneMats}/${totalMats} Selesai</td>
+                
+                <td class="p-2 text-right">
+                  <button onclick="openTeacherGradeModal('${st.id}')" class="px-3 py-1.5 text-xs text-white bg-indigo-600 rounded-lg">Nilai</button>
+                </td>
+              </tr>
+            `}).join('')}
+          </tbody>
+        </table>
+      `;
+    }
+
+    function openTeacherGradeModal(studentId) {
+      uiState.activeGradeStudentId = studentId;
+      renderTeacherGradeModalBody(studentId);
+      document.getElementById('modal-teacher-grade').classList.remove('hidden');
+    }
+    
+    function closeTeacherGradeModal() {
+      document.getElementById('modal-teacher-grade').classList.add('hidden');
+    }
+    
+    function renderTeacherGradeModalBody(studentId) {
+      const idx = db.students.findIndex(s => s.id === studentId);
+      const st = db.students[idx];
+      if (!st) return;
+      
+      const cls = db.classes.find(c => c.id === st.classId);
+      document.getElementById('grade-modal-student-name').textContent = getStudentDisplayName(st, idx);
+      
+      // FIXED TEMPLATE BUG HERE
+      document.getElementById('grade-modal-student-meta').textContent = `${cls ? `${cls.name} (${cls.code})` : ''} • Login: ${st.loginTime}`;
+      
+      const materials = cls ? cls.materials.filter(m => m.questions && m.questions.length > 0) : [];
+      document.getElementById('grade-modal-body').innerHTML = materials.length === 0 
+        ? `<div class="p-6 text-center text-sm">Belum ada tugas/latihan.</div>` 
+        : materials.map((mat) => {
+            const sub = st.submissions ? st.submissions[mat.id] : null;
+            return `
+              <div class="p-4 border rounded-xl bg-slate-50 mb-4">
+                <h4 class="font-bold text-sm mb-2">${escapeHtml(mat.title)}</h4>
+                ${sub ? mat.questions.map(q => `<p class="text-xs mb-1">Q: ${q.question}<br/>A: <strong class="text-indigo-700">${sub.answers[q.id] || '-'}</strong></p>`).join('') : '<p class="text-xs">Belum dikerjakan</p>'}
+                <div class="mt-3 flex gap-2">
+                  <input type="number" id="grade-score-${mat.id}" value="${sub && sub.teacherScore ? sub.teacherScore : ''}" placeholder="Nilai" class="w-20 px-2 py-1 border rounded text-sm" />
+                  
+                  <!-- FIXED TEMPLATE BUG HERE -->
+                  <button onclick="saveStudentGrade('${st.id}','${mat.id}')" class="px-3 py-1 bg-emerald-600 text-white rounded text-xs">Simpan</button>
+                </div>
+              </div>
+            `;
+          }).join('');
+    }
+    
+    function saveStudentGrade(studentId, materialId) {
+      const st = db.students.find(s => s.id === studentId);
+      if (!st) return;
+      
+      const score = Number(document.getElementById(`grade-score-${materialId}`).value);
+      if (!st.submissions) st.submissions = {};
+      if (!st.submissions[materialId]) st.submissions[materialId] = { answers: {}, teacherScore: score };
+      else st.submissions[materialId].teacherScore = score;
+      
+      saveDatabase();
+      showToast('Nilai disimpan!', 'success');
+    }
+
+    function getEffectiveSubmissionScore(sub) {
+      if (!sub) return null;
+      if (sub.teacherScore !== null && sub.teacherScore !== undefined && sub.teacherScore !== '') return Number(sub.teacherScore);
+      if (sub.autoScore !== null && sub.autoScore !== undefined) return Number(sub.autoScore);
+      return null;
+    }
+    
+    function getStudentAverageScore(student) {
+      if (!student || !student.submissions) return null;
+      const scores = Object.values(student.submissions).map(getEffectiveSubmissionScore).filter(val => val !== null);
+      return scores.length > 0 ? Math.round(scores.reduce((a, b) => a + b, 0) / scores.length) : null;
+    }
+    
+    function getCategoryBadgeStyle(cat) {
+      if (cat === 'Tugas') return { bg: 'bg-amber-100', text: 'text-amber-800' };
+      if (cat === 'Pengumuman') return { bg: 'bg-emerald-100', text: 'text-emerald-800' };
+      return { bg: 'bg-indigo-100', text: 'text-indigo-800' };
+    }
+    
+    function formatCurrentTime() {
+      const now = new Date();
+      return `${now.toLocaleDateString('id-ID', {day: '2-digit', month: 'short', year: 'numeric'})}, ${now.toLocaleTimeString('id-ID', {hour: '2-digit', minute: '2-digit'})} WIB`;
+    }
+    
+    function escapeHtml(str) {
+      if (typeof str !== 'string') return '';
+      return str.replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;').replace(/"/g, '&quot;').replace(/'/g, '&#039;');
+    }
+    
+    function showToast(msg, type = 'success') {
+      const container = document.getElementById('toast-container');
+      const toast = document.createElement('div');
+      toast.className = `p-3 rounded-lg text-sm text-white mb-2 shadow-lg ${type === 'error' ? 'bg-rose-600' : type === 'info' ? 'bg-indigo-600' : 'bg-slate-900'}`;
+      toast.textContent = msg;
+      container.appendChild(toast);
+      setTimeout(() => toast.remove(), 3000);
+    }
+    
+    window.addEventListener('DOMContentLoaded', () => {
+      loadDatabase();
+      loadSession();
+      if (session.role === 'guru') {
+        renderTeacherDashboard();
+        showView('view-teacher-dashboard');
+      } else if (session.role === 'murid' && session.studentId && session.classId) {
+        if (db.students.some(s => s.id === session.studentId) && db.classes.some(c => c.id === session.classId)) {
+          renderStudentClassroom();
+          showView('view-student-classroom');
+        } else goHome();
+      } else {
+        showView('view-landing');
+      }
+    });
+  </script>
+</body>
+</html>
